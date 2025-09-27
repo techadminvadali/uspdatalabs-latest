@@ -11,5 +11,35 @@
 html,
 body {
     color: black;
+    overflow-x: hidden;
+}
 
+/* Improve zoom behavior */
+* {
+    box-sizing: border-box;
+}
+
+/* Ensure proper scaling on zoom */
+@media (min-resolution: 1.5dppx) {
+    html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+}
+
+/* 3D Flip Card Styles */
+.perspective-1000 {
+    perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+    transform-style: preserve-3d;
+}
+
+.backface-hidden {
+    backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+    transform: rotateY(180deg);
 }

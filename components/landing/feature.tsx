@@ -11,7 +11,8 @@ import {
   Bot, 
   Plug,
   Database,
-  Workflow
+  Workflow,
+  ArrowRight
 } from "lucide-react";
 import DotPattern from "@/components/magicui/dot-pattern";
 import Ripple from "@/components/magicui/ripple";
@@ -43,8 +44,8 @@ const features = [
   },
   {
     Icon: Code,
-    name: "Zero-Code SaaS Engine",
-    description: "Convert data pipelines directly into production-grade SaaS modules — with zero build, test, or deploy steps.",
+    name: "Saas-in-SaaS Engine",
+    description: "Turn data pipelines into business-ready products. No build scripts. No deploy pipelines",
     className: "col-span-3 lg:col-span-1",
     background: (
       <div className="flex justify-center content-center h-full w-full">
@@ -61,8 +62,8 @@ const features = [
   },
   {
     Icon: Database,
-    name: "Automated API Marketplace",
-    description: "Share data products externally in 1-click —> we auto-build secure, production-ready APIs behind the scenes.",
+    name: "Automated Data Marketplace",
+    description: "Share data products externally in one-click → we auto-build secure, production-ready APIs behind the scenes.",
     className: "col-span-3 lg:col-span-1",
     background: (
       <div className="flex justify-center content-center h-full w-full">
@@ -113,7 +114,7 @@ const features = [
   {
     Icon: Shield,
     name: "Central Governance Without Friction",
-    description: "Enforce trust without slowing down. Role-based access at the most granular business function level through intuitive UI and metadata policies.",
+    description: "Enforce trust , Role-based access at the most granular business function level through intuitive UI and metadata policies.",
     className: "col-span-3 lg:col-span-1",
     background: (
       <div className="flex justify-center content-center h-full w-full">
@@ -158,7 +159,7 @@ const features = [
   {
     Icon: Plug,
     name: "Plug and Play. Not Rip and Replace.",
-    description: "Connect instantly to your existing cloud, BI, and security stack — no need to rebuild pipelines or workflows, Public Cloud or On-Premise.",
+    description: "Connect instantly to your existing Cloud, BI and Security stack — no need to build pipelines or workflows, Public Cloud or On-Premise.",
     className: "col-span-3 lg:col-span-1",
     background: (
       <div className="flex justify-center content-center h-full w-full">

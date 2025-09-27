@@ -11,6 +11,14 @@ import AnimatedGridPattern from "@/components/magicui/animated-grid-pattern";
 import DotPattern from "@/components/magicui/dot-pattern";
 import { cn } from "@/lib/utils";
 import ReCAPTCHA from "react-google-recaptcha";
+import { TypeAnimation } from "react-type-animation";
+import { formatTypingSequence } from "@/lib/utils";
+
+const advantageSequence = formatTypingSequence([
+  "USP Data Labs - A True Business Advantage",
+  "Transform Your Data Operations Today",
+ 
+]);
 
 export default function Contact() {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -192,11 +200,16 @@ export default function Contact() {
                 />
               </div>
               <div className="relative z-10">
-                <h3 className="font-bold text-gray-800 mb-2">Quick Response Guarantee</h3>
-                <p className="text-gray-600 text-sm">
-                  We typically respond to all inquiries within 24 hours. For urgent matters, please call us directly.
-                </p>
-              </div>
+                <h3 className="font-bold text-blue-600 text-2xl text-center mb-2">
+                  <TypeAnimation
+                    preRenderFirstString={true}
+                    speed={50}
+                    repeat={Infinity}
+                    sequence={advantageSequence}
+                    className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
+                  />
+                </h3>
+                              </div>
             </div>
           </motion.div>
 

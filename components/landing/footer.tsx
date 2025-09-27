@@ -25,11 +25,7 @@ export default function Footer() {
             USP DataLabs. All Rights Reserved.
           </h1>
           <div className="flex space-x-14">
-            <Link href="/">
-              <Button variant="link" size="icon">
-                Platform
-              </Button>
-            </Link>
+            
             <Link href="/solutions">
               <Button variant="link" size="icon">
                 Solutions

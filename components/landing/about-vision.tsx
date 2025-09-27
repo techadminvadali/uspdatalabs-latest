@@ -121,44 +121,7 @@ const values = [
   }
 ];
 
-const journeys = [
-  {
-    icon: Users,
-    title: "On-premise to Cloud Migration",
-    description: "Seamlessly migrate legacy systems to modern cloud infrastructure",
-    details: "From mainframes to microservices, we help you modernize your data infrastructure without disrupting business operations."
-  },
-  {
-    icon: Lightbulb,
-    title: "First-time GenAI Implementation", 
-    description: "Build your first AI applications without complex setup",
-    details: "Jumpstart your AI journey with pre-built models, automated training pipelines, and production-ready deployment tools."
-  },
-  {
-    icon: Zap,
-    title: "Cross-domain Data Scaling",
-    description: "Scale data operations across multiple business domains",
-    details: "Connect data silos, establish governance frameworks, and enable self-service analytics across your entire organization."
-  },
-  {
-    icon: Shield,
-    title: "Compliance & Governance",
-    description: "Achieve regulatory compliance with automated data governance",
-    details: "Meet GDPR, CCPA, and industry-specific requirements with built-in compliance tools and audit trails."
-  },
-  {
-    icon: Globe,
-    title: "Global Data Operations",
-    description: "Scale data operations across multiple regions and time zones",
-    details: "Deploy and manage data infrastructure globally with region-specific compliance and performance optimization."
-  },
-  {
-    icon: Award,
-    title: "Data Product Innovation",
-    description: "Transform data into revenue-generating products and services",
-    details: "Create APIs, dashboards, and applications that turn your data assets into new business opportunities."
-  }
-];
+
 
 const stats = [
   {
@@ -175,7 +138,7 @@ const stats = [
   },
   {
     icon: TrendingUp,
-    value: "4x",
+    value: "5x",
     label: "Productivity Boost",
     description: "Enable teams to focus on high-value work"
   },
@@ -238,7 +201,7 @@ export default function AboutVision() {
           className="mb-20"
         >
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-gray-800 mb-4">Our Values</h3>
+            <h3 className="text-3xl font-bold text-gray-800 mb-4">Our Principles</h3>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               These principles guide everything we do, from product development to customer success.
             </p>
@@ -309,7 +272,7 @@ export default function AboutVision() {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-200 to-purple-300 rounded-full flex items-center justify-center mx-auto mb-4">
                   <stat.icon className="w-10 h-10 text-white" />
                 </div>
                 <div className="text-4xl font-bold text-gray-800 mb-2">{stat.value}</div>
@@ -320,44 +283,7 @@ export default function AboutVision() {
           </div>
         </motion.div>
 
-        {/* Journey Support */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="bg-gray-50 rounded-2xl p-12"
-        >
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-gray-800 mb-4">Built for Every Journey</h3>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Whether you&apos;re migrating from on-prem, building your first GenAI app, or scaling across business domains — 
-              we help you move faster, cheaper, and smarter, without hiring an army of engineers.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {journeys.map((journey, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:scale-105"
-              >
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <journey.icon className="w-8 h-8 text-blue-600" />
-                  </div>
-                  <h4 className="text-xl font-semibold text-gray-800 mb-3">{journey.title}</h4>
-                  <p className="text-gray-600 mb-3">{journey.description}</p>
-                  
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+   
 
         {/* CTA */}
         <motion.div
@@ -370,7 +296,7 @@ export default function AboutVision() {
           <div className="bg-gray-800 rounded-2xl p-12 text-white">
             <h3 className="text-3xl font-bold mb-4">Ready to Transform Your Data Journey?</h3>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Join the companies already seeing 80% cost reduction and 4x faster delivery.
+              Join the companies already seeing 80% cost reduction and 5x faster delivery.
             </p>
             <button className="bg-white text-gray-800 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold flex items-center space-x-2 mx-auto transition-all duration-300 hover:scale-105">
               <span>Get Started Today</span>

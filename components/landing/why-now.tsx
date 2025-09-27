@@ -1,6 +1,6 @@
 "use client";
 
-import { Brain, Cloud, Wrench, Zap, TrendingUp, AlertTriangle } from "lucide-react";
+import { Brain, Cloud, Wrench, Zap, TrendingUp, AlertTriangle,Workflow, Boxes } from "lucide-react";
 import DM_Sans from "@/lib/fonts/dm-sans";
 import { motion } from "framer-motion";
 import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
@@ -8,6 +8,7 @@ import AnimatedGridPattern from "@/components/magicui/animated-grid-pattern";
 import DotPattern from "@/components/magicui/dot-pattern";
 import Ripple from "@/components/magicui/ripple";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 // Dummy icon component for hover overlay
 const DummyIcon = () => <div className="h-12 w-12" />;
@@ -19,9 +20,9 @@ const challenges = [
     description: (
       <div className="relative">
         <div className="flex items-center justify-center -mt-20 pb-5">
-          <img src="/Arrow.svg" alt="" className="h-16 w-16 text-blue-500" />
+          <Image src="/Arrow.svg" alt="" width={64} height={64} className="h-16 w-16 text-blue-500" />
         </div>
-        <div>GenAI is real, but 80%+ of enterprises aren't infra-ready to launch meaningful use cases.</div>
+        <div>GenAI projects stall in RAG complexity and compliance worries</div>
       </div>
     ),
     className: "col-span-3 lg:col-span-1",
@@ -32,9 +33,9 @@ const challenges = [
             <div className="flex items-center justify-center mb-2">
               <Brain className="w-8 h-8 " />
             </div>
-            AI-Ready
+            Saas-In-SaaS
             <br />
-            Infrastructure
+            Simplicity
           </div>
         </div>
         <DotPattern
@@ -54,9 +55,9 @@ const challenges = [
     description: (
       <div className="relative">
         <div className="flex items-center justify-center -mt-20 pb-5">
-          <img src="/Arrow.svg" alt="" className="h-16 w-16 text-blue-500" />
+          <Image src="/Arrow.svg" alt="" width={64} height={64} className="h-16 w-16 text-blue-500" />
         </div>
-        <div>Cloud costs are exploding, and hiring engineers has become harder than building platforms.</div>
+        <div>Heavy engineering effort and human-driven complexity delay transformation journeys</div>
       </div>
     ),
     className: "col-span-3 lg:col-span-1",
@@ -65,11 +66,12 @@ const challenges = [
         <div className="m-auto p-8 z-10">
           <div className="text-2xl font-medium text-black text-center">
             <div className="flex items-center justify-center mb-2">
-              <Cloud className="w-8 h-8 " />
+            <Workflow className="w-8 h-8 " />
+         
             </div>
-            Cost
+            Lean
             <br />
-            Savings
+            Automation
           </div>
         </div>
         <DotPattern
@@ -85,12 +87,13 @@ const challenges = [
     Icon: DummyIcon,
     name: " ",
 
+
     description: (
       <div className="relative">
         <div className="flex items-center justify-center -mt-20 pb-5">
-          <img src="/Arrow.svg" alt="" className="h-16 w-16 text-blue-500" />
+          <Image src="/Arrow.svg" alt="" width={64} height={64} className="h-16 w-16 text-blue-500" />
         </div>
-        <div>Fragmented toolchains are creating tech debt faster than transformation.</div>
+        <div>Fragmented toolchains create tech debt faster than transformation</div>
       </div>
     ),
     className: "col-span-3 lg:col-span-1",
@@ -99,9 +102,10 @@ const challenges = [
         <div className="m-auto p-8 z-10">
           <div className="text-2xl font-medium text-black text-center">
             <div className="flex items-center justify-center mb-2">
-              <Wrench className="w-8 h-8 " />
+            <Boxes className="w-8 h-8 " />
+         
             </div>
-            Unified
+            One Unified 
             <br />
             Platform
           </div>
@@ -121,9 +125,9 @@ const challenges = [
     description: (
       <div className="relative">
         <div className="flex items-center justify-center -mt-20 pb-5">
-          <img src="/Arrow.svg" alt="" className="h-16 w-16 text-blue-500" />
+          <Image src="/Arrow.svg" alt="" width={64} height={64} className="h-16 w-16 text-blue-500" />
         </div>
-        <div >The data automation market is exploding. Early adopters gain massive competitive advantage.</div>
+        <div >Data transformation is the mountain slowing AI/GenAI adoption.</div>
       </div>
     ),
     className: "col-span-3 lg:col-span-1",
@@ -134,9 +138,9 @@ const challenges = [
             <div className="flex items-center justify-center mb-2">
               <TrendingUp className="w-8 h-8 " />
             </div>
-            Market
+            Fast Track To 
             <br />
-            Opportunity
+            AI Gold
           </div>
         </div>
         <DotPattern
@@ -149,6 +153,9 @@ const challenges = [
     ),
   },
 ];
+
+
+
 
 export default function WhyNow() {
   return (
@@ -164,7 +171,7 @@ export default function WhyNow() {
           <h2 className={`text-5xl font-bold mb-6 text-gray-800 ${DM_Sans.className}`}>
             Why Now?
           </h2>
-          <img src="/direction.svg" alt="" className=" items-center w-[200px] h-[200px] -mt-20 left-10 -scale-x-100 absolute" />
+          <Image src="/direction.svg" alt="" width={200} height={200} className=" items-center w-[200px] h-[200px] -mt-20 left-10 -scale-x-100 absolute" />
       
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 border border-blue-200 mb-6">
               <Zap className="w-5 h-5 text-blue-600 mr-2" />

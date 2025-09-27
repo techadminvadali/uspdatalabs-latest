@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertTriangle, Zap, CheckCircle, XCircle, ArrowRight, Sparkles, TrendingUp, Shield, Clock, DollarSign, Circle } from "lucide-react";
+import { AlertTriangle, Zap, CheckCircle, XCircle, ArrowRight, Sparkles, TrendingUp, Shield, Clock, DollarSign, Circle, Globe, Award, Users, Lightbulb } from "lucide-react";
 import DM_Sans from "@/lib/fonts/dm-sans";
 import { motion } from "framer-motion";
 import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
@@ -11,6 +11,46 @@ import WordRotate from "@/components/magicui/word-rotate";
 import Ripple from "@/components/magicui/ripple";
 import { cn } from "@/lib/utils";
 
+
+
+const journeys = [
+  {
+    icon: Users,
+    title: "On-premise to Cloud Migration",
+    description: "Seamlessly migrate legacy systems to modern cloud infrastructure",
+    details: "From mainframes to microservices, we help you modernize your data infrastructure without disrupting business operations."
+  },
+  {
+    icon: Lightbulb,
+    title: "First-time GenAI Implementation", 
+    description: "Build your first AI applications without complex setup",
+    details: "Jumpstart your AI journey with pre-built models, automated training pipelines, and production-ready deployment tools."
+  },
+  {
+    icon: Zap,
+    title: "Cross-domain Data Scaling",
+    description: "Scale data operations across multiple business domains",
+    details: "Connect data silos, establish governance frameworks, and enable self-service analytics across your entire organization."
+  },
+  {
+    icon: Shield,
+    title: "Compliance & Governance",
+    description: "Achieve regulatory compliance with automated data governance",
+    details: "Meet GDPR, CCPA, and industry-specific requirements with built-in compliance tools and audit trails."
+  },
+  {
+    icon: Globe,
+    title: "Global Data Operations",
+    description: "Scale data operations across multiple regions and time zones",
+    details: "Deploy and manage data infrastructure globally with region-specific compliance and performance optimization."
+  },
+  {
+    icon: Award,
+    title: "Data Product Innovation",
+    description: "Transform data into revenue-generating products and services",
+    details: "Create APIs, dashboards, and applications that turn your data assets into new business opportunities."
+  }
+];  
 const problems = [
   {
     icon: AlertTriangle,
@@ -201,7 +241,7 @@ const solutions = [
   },
   {
     traditional: "Long engineering & QA cycles",
-    usp: "4x faster productization",
+    usp: "5x faster productization",
     benefit: "Ship features in weeks, not months"
   },
   {
@@ -253,7 +293,31 @@ export default function ProblemSolution() {
           
           <BentoGrid>
             {problems.map((problem, idx) => (
-              <BentoCard key={idx} {...problem} />
+              <BentoCard 
+                key={idx} 
+                {...problem}
+                background={
+                  <div className="group relative h-full w-full">
+                    {/* Original background */}
+                    <div className="h-full w-full">
+                      {problem.background}
+                    </div>
+                    
+                    {/* Hover overlay with description */}
+                    <div className="absolute inset-0  bg-[#f5f3f1] rounded-2xl p-6 border border-gray-200 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                      <div className="h-full flex flex-col justify-center">
+                        <div className="text-center mb-4">
+                                    <h3 className="text-xl font-bold text-gray-800 mb-3">{problem.title}</h3>
+                        </div>
+                        <p className="text-gray-600 text-sm leading-relaxed mb-4">{problem.details}</p>
+                        <div className="bg-red-50 border-l-4 border-red-400 p-3 rounded">
+                          <p className="text-red-700 text-sm font-medium">{problem.impact}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                }
+              />
             ))}
           </BentoGrid>
         </motion.div>
@@ -332,16 +396,9 @@ export default function ProblemSolution() {
                               <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
                             </svg>
                           </div>
-                          <p className="text-sm text-gray-500 line-through">{solution.traditional}</p>
+                          <p className="text-sm text-gray-500 ">{solution.traditional}</p>
                         </div>
-                        <div className="flex items-start">
-                          <div className="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
-                            <svg className="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                          </div>
-                          <p className="text-sm font-medium text-gray-900">{solution.usp}</p>
-                        </div>
+                      
                       </div>
                     </div>
                     
@@ -352,6 +409,7 @@ export default function ProblemSolution() {
               ))}
             </div>
             
+ 
             {/* CTA */}
             <div className="mt-16 text-center">
               <p className="text-lg text-gray-600 mb-6">Ready to transform your data operations?</p>
@@ -362,6 +420,54 @@ export default function ProblemSolution() {
             </div>
           </div>
         </motion.div>
+
+
+
+
+    {/* Journey Support */}
+    <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="bg-gray-50 rounded-2xl p-12"
+        >
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-gray-800 mb-4">Built for Every Journey</h3>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Whether you&apos;re migrating from on-prem, building your first GenAI app, or scaling across business domains — 
+              we help you move faster, cheaper, and smarter, without hiring an army of engineers.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {journeys.map((journey, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:scale-105"
+              >
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <journey.icon className="w-8 h-8 text-blue-600" />
+                  </div>
+                  <h4 className="text-xl font-semibold text-gray-800 mb-3">{journey.title}</h4>
+                  <p className="text-gray-600 mb-3">{journey.description}</p>
+                  
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+
+
+
+
+
       </div>
     </div>
   );

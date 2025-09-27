@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
 import AnimatedGridPattern from "@/components/magicui/animated-grid-pattern";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const metrics = [
   {
@@ -55,7 +56,7 @@ export default function UseCaseImpact() {
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             See how USP DataLabs transforms enterprise data operations with measurable outcomes.
           </p>
-          <img src="/direction.svg" alt="" className=" items-center w-[200px] h-[200px] -mt-20 right-10  absolute" />
+          <Image src="/direction.svg" alt="" width={200} height={200} className=" items-center w-[200px] h-[200px] -mt-20 right-10  absolute" />
         </motion.div>
 
         {/* Case Study */}
