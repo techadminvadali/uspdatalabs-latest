@@ -1,5 +1,4 @@
 'use client';
-
 import Feature from "@/components/landing/feature";
 import Footer from "@/components/landing/footer";
 import Header from "@/components/landing/header";
@@ -10,6 +9,8 @@ import { GlowCapture } from "@codaworks/react-glow";
 import { ParallaxSection } from '@/components/ui/ParallaxSection';
 import { SectionSpacer } from '@/components/ui/SectionSpacer';
 import { useEffect, useState } from 'react';
+import Architecture from "@/components/landing/architecture";
+import PlatformDemo from "@/components/landing/platform-demo";
 
 export default function Page() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -35,7 +36,7 @@ export default function Page() {
               <SectionSpacer size="lg" />
       
           </div>
-        
+     
           {/* Platform Highlights Section */}
           <div className="relative z-20 bg-gradient-to-b from-white to-gray-50">
             <ParallaxSection 
@@ -50,6 +51,38 @@ export default function Page() {
               <SectionSpacer size="lg" />
             </ParallaxSection>
           </div>
+
+          {/* Platform Demo Section */}
+          <div className="relative z-20 bg-white">
+            <ParallaxSection 
+              speed={0.5} 
+              fadeIn={true}
+              scaleEffect={true}
+              className="py-16 md:py-24"
+            >
+              <PlatformDemo />
+              <SectionSpacer size="lg" />
+            </ParallaxSection>
+          </div>
+
+  {/* Architecture Section */}
+  <div className="relative z-20 bg-gradient-to-b from-white to-gray-50">
+            <ParallaxSection 
+              speed={0.5} 
+              fadeIn={true}
+              scaleEffect={true}
+              className="py-16 md:py-24"
+            >
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <Architecture />
+              </div>
+              <SectionSpacer size="lg" />
+            </ParallaxSection>
+          </div>
+
+
+
+
       
           {/* Use Case Impact Section */}
           <div className="relative z-30 bg-white">
