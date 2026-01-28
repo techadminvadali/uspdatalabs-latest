@@ -1,12 +1,11 @@
+
+/* Leaflet CSS for map components */
+@import url('https://unpkg.com/leaflet@1.9.4/dist/leaflet.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-    .text-balance {
-        text-wrap: balance;
-    }
-}
+
 
 html,
 body {
@@ -43,3 +42,4 @@ body {
 .rotate-y-180 {
     transform: rotateY(180deg);
 }
+

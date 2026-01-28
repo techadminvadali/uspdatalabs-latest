@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
 import { Search, MapPin, Phone, Mail, X } from "lucide-react";
 
 // Office locations data with more detailed information
@@ -69,38 +67,44 @@ const offices = [
 const countries = Array.from(new Set(offices.map(office => office.country)));
 const continents = Array.from(new Set(offices.map(office => office.continent)));
 
-// Map pin marker icon using Lucide React
-const createMapPin = () => {
-  return L.divIcon({
-    className: "map-pin-marker",
-    html: `
-      <div style="
-        width: 24px;
-        height: 24px;
-        color: #000000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: white;
-        border-radius: 50%;
-      
-      ">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#000000" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-          <circle cx="12" fill="#ffffff" cy="10" r="5"/>
-        </svg>
-      </div>
-    `,
-    iconSize: [150, 150],
-    iconAnchor: [12, 12],
-  });
-};
 
 // Dynamic import with SSR disabled
-const DynamicMap = dynamic(() => import("react-leaflet").then((mod) => {
-  const { MapContainer, TileLayer, Marker, Popup } = mod;
+const DynamicMap = dynamic(() => Promise.all([
+  import("react-leaflet"),
+  import("leaflet")
+]).then(([reactLeaflet, leaflet]) => {
+  const { MapContainer, TileLayer, Marker, Popup } = reactLeaflet;
+  const L = leaflet.default;
   
   return function MapComponent({ selectedOffices, onOfficeClick }: { selectedOffices: typeof offices, onOfficeClick: (office: typeof offices[0]) => void }) {
+    
+    // Map pin marker icon using Lucide React
+    const createMapPin = () => {
+      return L.divIcon({
+        className: "map-pin-marker",
+        html: `
+          <div style="
+            width: 24px;
+            height: 24px;
+            color: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border-radius: 50%;
+          
+          ">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#000000" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" fill="#ffffff" cy="10" r="5"/>
+            </svg>
+          </div>
+        `,
+        iconSize: [150, 150],
+        iconAnchor: [12, 12],
+      });
+    };
+
     useEffect(() => {
       // Fix for default markers in react-leaflet
       delete (L.Icon.Default.prototype as any)._getIconUrl;

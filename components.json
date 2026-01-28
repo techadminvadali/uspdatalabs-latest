@@ -9,8 +9,12 @@
     "baseColor": "gray",
     "cssVariables": false
   },
+  "iconLibrary": "lucide",
   "aliases": {
-    "utils": "@/lib/utils",
-    "components": "@/components"
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  },
+  "registries": {
+    "@shadcn-map": "http://shadcn-map.vercel.app/r/{name}.json"
   }
 }
