@@ -163,7 +163,7 @@ export default function Overview() {
           >
             {/* Main Headline with Typing Animation */}
             <motion.div variants={fadeInUpVariants}>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 bg-clip-text text-transparent tracking-tight leading-tight min-h-[60px] sm:min-h-[80px] md:min-h-[100px]">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 bg-clip-text text-transparent tracking-tight leading-tight min-h-[80px] sm:min-h-[100px] md:min-h-[120px]">
                 <TypeAnimation
                   preRenderFirstString={true}
                   speed={50}
