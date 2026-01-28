@@ -33,7 +33,7 @@ export function ParallaxSection({
 
   const sectionRef = useRef<HTMLDivElement>(null);
   const lastScrollY = useRef(0);
-  const animationFrameId = useRef<number>();
+  const animationFrameId = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     if (inView) setIsVisible(true);
