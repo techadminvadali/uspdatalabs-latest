@@ -20,7 +20,7 @@ import orb3 from '../../public/orb3.png'
 import orb4 from '../../public/orb4.png'
 import orb5 from '../../public/obr5.png'
 
-import FinalLogo from '../../public/Logo.png'
+import FinalLogo from '../../public/theLogo.jpeg'
 
 import Link from "next/link";
 
@@ -148,10 +148,10 @@ export default function Overview() {
   return (
     <main
       ref={ref}
-      className="min-h-screen bg-white relative flex flex-col w-full overflow-hidden"
+      className="bg-white relative flex flex-col w-full overflow-hidden pt-16"
     >
       {/* HERO Content */}
-      <div className="flex-1 flex items-center justify-center px-6 py-8 sm:py-16 md:py-24 lg:py-40">
+      <div className="flex-1 flex items-center justify-center px-6 py-8 sm:py-16 md:py-24 lg:py-24">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-6xl mx-auto w-full">
           
           {/* LEFT: TEXT CONTENT */}
@@ -163,7 +163,7 @@ export default function Overview() {
           >
             {/* Main Headline with Typing Animation */}
             <motion.div variants={fadeInUpVariants}>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-orange-500 tracking-tight leading-tight min-h-[60px] sm:min-h-[80px] md:min-h-[100px]">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 bg-clip-text text-transparent tracking-tight leading-tight min-h-[60px] sm:min-h-[80px] md:min-h-[100px]">
                 <TypeAnimation
                   preRenderFirstString={true}
                   speed={50}
@@ -179,9 +179,9 @@ export default function Overview() {
               variants={descriptionVariants}
               className="max-w-xl mx-auto lg:mx-0"
             >
-              <p className={`text-orange-600 text-base sm:text-lg md:text-xl leading-relaxed ${DM_Sans.className}`}>
+              <p className={`text-slate-700 text-base sm:text-lg md:text-xl leading-relaxed ${DM_Sans.className}`}>
                 An automation-first platform that lets you orchestrate data, deploy AI, and launch digital products —
-                <span className="text-blue-600 font-semibold"> without writing code or building infra.</span>
+                <span className="text-indigo-700 font-semibold"> without writing code or building infra.</span>
               </p>
             </motion.div>
 
@@ -194,7 +194,7 @@ export default function Overview() {
             >
               <motion.div variants={buttonVariants}>
                 <Button
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg rounded-full transition-all duration-300 shadow-lg hover:shadow-blue-600/25 w-full sm:w-auto min-w-[180px] hover:scale-105"
+                  className="bg-indigo-700 hover:bg-indigo-800 text-white font-semibold px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg rounded-full transition-all duration-300 shadow-lg hover:shadow-indigo-700/25 w-full sm:w-auto min-w-[180px] hover:scale-105"
                 >
                   <Link href="/contact">Get Started</Link>
                 </Button>
@@ -202,11 +202,11 @@ export default function Overview() {
 
               <motion.div variants={buttonVariants}>
                 <Button
-                  variant="outline"
-                  className="border-2 border-orange-500 hover:border-orange-600 text-orange-600 hover:text-orange-700 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg rounded-full transition-all duration-300 bg-transparent hover:bg-orange-50 w-full sm:w-auto min-w-[180px] hover:scale-105"
-                >
-                  <Link href="/about">About Us</Link>
-                </Button>
+              variant="outline"
+              className="border-2 border-indigo-700 hover:border-indigo-800 text-indigo-700 hover:text-indigo-800 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg rounded-full transition-all duration-300 bg-transparent hover:bg-indigo-50 w-full sm:w-auto min-w-[180px] hover:scale-105"
+            >
+              <Link href="/about">About Us</Link>
+            </Button>
               </motion.div>
             </motion.div>
           </motion.div>
@@ -282,15 +282,16 @@ export default function Overview() {
 
               {/* Center Icon */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
-                <div className="relative w-24 h-24 rounded-full flex items-center justify-center shadow-2xl shadow-blue-500/40 border-2 border-blue-400/30">
+                <div className="relative w-28 h-28 rounded-full flex items-center justify-center shadow-2xl shadow-orange-400/30 border-2 border-orange-300/50 bg-white overflow-hidden">
                   <Image
                     src={FinalLogo}
                     alt="Center Logo"
-                    fill
-                    className="object-cover rounded-full opacity-75 animate-pulse-slow"
+                    width={100}
+                    height={60}
+                    className="object-contain animate-pulse-slow"
                   />
                 </div>
-              </div>
+                </div>
             </div>
           </motion.div>
         </div>
