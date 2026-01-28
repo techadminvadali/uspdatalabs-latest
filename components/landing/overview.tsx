@@ -148,22 +148,22 @@ export default function Overview() {
   return (
     <main
       ref={ref}
-      className="min-h-screen bg-[#0a192f] relative flex flex-col w-full overflow-hidden"
+      className="min-h-screen bg-white relative flex flex-col w-full overflow-hidden"
     >
       {/* HERO Content */}
-      <div className="flex-1 flex items-center justify-center px-6 py-20 sm:py-28 md:py-32 lg:py-40">
-        <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto w-full">
+      <div className="flex-1 flex items-center justify-center px-6 py-8 sm:py-16 md:py-24 lg:py-40">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-6xl mx-auto w-full">
           
           {/* LEFT: TEXT CONTENT */}
           <motion.div
             initial="hidden"
             animate={play ? "visible" : "hidden"}
             variants={headingContainerVariants}
-            className="relative z-10 text-center lg:text-left space-y-8"
+            className="relative z-10 text-center lg:text-left space-y-4 sm:space-y-6 lg:space-y-8"
           >
             {/* Main Headline with Typing Animation */}
             <motion.div variants={fadeInUpVariants}>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-white tracking-tight leading-tight min-h-[80px] sm:min-h-[100px] md:min-h-[120px]">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-orange-500 tracking-tight leading-tight min-h-[60px] sm:min-h-[80px] md:min-h-[100px]">
                 <TypeAnimation
                   preRenderFirstString={true}
                   speed={50}
@@ -179,9 +179,9 @@ export default function Overview() {
               variants={descriptionVariants}
               className="max-w-xl mx-auto lg:mx-0"
             >
-              <p className={`text-gray-300 text-base sm:text-lg md:text-xl leading-relaxed ${DM_Sans.className}`}>
+              <p className={`text-orange-600 text-base sm:text-lg md:text-xl leading-relaxed ${DM_Sans.className}`}>
                 An automation-first platform that lets you orchestrate data, deploy AI, and launch digital products —
-                <span className="text-blue-400 font-semibold"> without writing code or building infra.</span>
+                <span className="text-blue-600 font-semibold"> without writing code or building infra.</span>
               </p>
             </motion.div>
 
@@ -190,7 +190,7 @@ export default function Overview() {
               variants={buttonContainerVariants}
               initial="hidden"
               animate={play ? "visible" : "hidden"}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center pt-6"
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center pt-2 sm:pt-4 lg:pt-6"
             >
               <motion.div variants={buttonVariants}>
                 <Button
@@ -203,7 +203,7 @@ export default function Overview() {
               <motion.div variants={buttonVariants}>
                 <Button
                   variant="outline"
-                  className="border-2 border-gray-500 hover:border-gray-400 text-white font-semibold px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg rounded-full transition-all duration-300 bg-transparent hover:bg-white/5 w-full sm:w-auto min-w-[180px] hover:scale-105"
+                  className="border-2 border-orange-500 hover:border-orange-600 text-orange-600 hover:text-orange-700 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg rounded-full transition-all duration-300 bg-transparent hover:bg-orange-50 w-full sm:w-auto min-w-[180px] hover:scale-105"
                 >
                   <Link href="/about">About Us</Link>
                 </Button>
@@ -211,12 +211,12 @@ export default function Overview() {
             </motion.div>
           </motion.div>
 
-          {/* RIGHT: ORBIT ANIMATION */}
+          {/* RIGHT: ORBIT ANIMATION - Hidden on mobile, visible on lg+ */}
           <motion.div
             initial="hidden"
             animate={play ? "visible" : "hidden"}
             variants={orbitVariants}
-            className="relative w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] flex justify-center items-center"
+            className="hidden lg:block relative w-full h-[450px]"
           >
             {/* Orbit Container */}
             <div className="orbit-container relative w-full h-full flex justify-center items-center">
@@ -282,7 +282,7 @@ export default function Overview() {
 
               {/* Center Icon */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
-                <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center shadow-2xl shadow-blue-500/40 border-2 border-blue-400/30">
+                <div className="relative w-24 h-24 rounded-full flex items-center justify-center shadow-2xl shadow-blue-500/40 border-2 border-blue-400/30">
                   <Image
                     src={FinalLogo}
                     alt="Center Logo"
@@ -297,83 +297,7 @@ export default function Overview() {
       </div>
 
       {/* Partners / Trusted By Section */}
-      <motion.div
-        initial="hidden"
-        animate={play || isMobile ? "visible" : "hidden"}
-        variants={trustedByVariants}
-        className="py-12 flex flex-col justify-center items-center gap-6 w-full bg-white"
-      >
-        <div className="text-gray-400 text-sm font-medium tracking-wider">
-          TRUSTED BY
-        </div>
-        <div className="relative w-full max-w-5xl overflow-hidden">
-          <div className="flex animate-marquee whitespace-nowrap">
-            {defaultPartners.map((partner, index) => (
-              <div
-                key={`logo-${index}`}
-                className="flex items-center justify-center mx-4 sm:mx-8 flex-shrink-0"
-              >
-                {partner.link ? (
-                  <a
-                    href={partner.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="cursor-pointer hover:scale-105 transition-transform duration-200"
-                  >
-                    <Image
-                      src={partner.logo}
-                      alt={`${partner.name} logo`}
-                      width={120}
-                      height={60}
-                      className="object-contain h-12 sm:h-16 md:h-20 w-auto"
-                    />
-                  </a>
-                ) : (
-                  <Image
-                    src={partner.logo}
-                    alt={`${partner.name} logo`}
-                    width={120}
-                    height={60}
-                    className="object-contain h-12 sm:h-16 md:h-20 w-auto cursor-default"
-                  />
-                )}
-              </div>
-            ))}
-            {/* Duplicate for seamless marquee */}
-            {defaultPartners.map((partner, index) => (
-              <div
-                key={`logo2-${index}`}
-                className="flex items-center justify-center mx-4 sm:mx-8 flex-shrink-0"
-              >
-                {partner.link ? (
-                  <a
-                    href={partner.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="cursor-pointer hover:scale-105 transition-transform duration-200"
-                  >
-                    <Image
-                      src={partner.logo}
-                      alt={`${partner.name} logo`}
-                      width={120}
-                      height={60}
-                      className="object-contain h-12 sm:h-16 md:h-20 w-auto"
-                    />
-                  </a>
-                ) : (
-                  <Image
-                    src={partner.logo}
-                    alt={`${partner.name} logo`}
-                    width={120}
-                    height={60}
-                    className="object-contain h-12 sm:h-16 md:h-20 w-auto cursor-default"
-                  />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </motion.div>
+      
     </main>
   );
 }

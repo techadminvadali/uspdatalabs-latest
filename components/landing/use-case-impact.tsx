@@ -41,22 +41,29 @@ const metrics = [
 
 export default function UseCaseImpact() {
   return (
-    <div className="bg-white py-20 w-full overflow-x-hidden">
-      <div className="max-w-7xl mx-auto px-8 w-full">
+    <div className="bg-white py-12 md:py-20 w-full overflow-x-hidden">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16 relative"
         >
-          <h2 className={`text-5xl font-bold mb-6 text-gray-800 ${DM_Sans.className}`}>
+          <h2 className={`text-3xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-800 ${DM_Sans.className}`}>
             Real Impact, Real Results
           </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">
             See how USP DataLabs transforms enterprise data operations with measurable outcomes.
           </p>
-          <Image src="/direction.svg" alt="" width={200} height={200} className=" items-center w-[200px] h-[200px] -mt-20 right-10  absolute" />
+          {/* Arrow - smaller on mobile, larger on desktop */}
+          <Image 
+            src="/direction.svg" 
+            alt="" 
+            width={200} 
+            height={200} 
+            className="absolute w-[80px] h-[80px] md:w-[150px] md:h-[150px] lg:w-[200px] lg:h-[200px] -mt-8 md:-mt-16 lg:-mt-20 right-2 md:right-10 pointer-events-none" 
+          />
         </motion.div>
 
         {/* Case Study */}
@@ -65,18 +72,18 @@ export default function UseCaseImpact() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
-          className="bg-gray-50 rounded-2xl p-12 mb-16"
+          className="bg-gray-50 rounded-2xl p-6 md:p-12 mb-12 md:mb-16"
         >
-          <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold text-gray-800 mb-4"> Client Success Story</h3>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <div className="text-center mb-6 md:mb-8">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-3 md:mb-4">Client Success Story</h3>
+            <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto px-2">
               <strong className="text-gray-800">20TB of data, 1000+ pipelines, €2M estimated migration cost</strong> — delivered in 4 months with 4 engineers at 80% lower TCO.
             </p>
           </div>
 
           {/* Metrics Table */}
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
               {metrics.map((metric, index) => (
                 <motion.div
                   key={index}
@@ -84,7 +91,7 @@ export default function UseCaseImpact() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="p-6 border-r border-gray-200 last:border-r-0"
+                  className="p-6 border-b md:border-b-0 md:border-r border-gray-200 last:border-b-0 md:last:border-r-0 lg:border-b-0"
                 >
                   <div className="text-center">
                     <metric.icon className="w-8 h-8 mx-auto mb-3 text-gray-600" />
@@ -117,4 +124,3 @@ export default function UseCaseImpact() {
     </div>
   );
 }
-

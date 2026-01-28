@@ -30,7 +30,7 @@ export default function Page() {
         <Header />
         <div className="w-full">
           {/* Hero Section - Full Screen */}
-          <div className="relative z-10 mt-10">
+          <div className="relative z-10 ">
          
               <Overview />
               <SectionSpacer size="lg" />

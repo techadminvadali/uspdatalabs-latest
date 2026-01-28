@@ -123,13 +123,13 @@ export default function OfficeLocator() {
   };
 
   return (
-    <div className="w-full h-[600px] bg-white rounded-xl shadow-lg border border-neutral-200 overflow-hidden ">
-      <div className="flex h-full">
+    <div className="w-full h-auto lg:h-[600px] bg-white rounded-xl shadow-lg border border-neutral-200 overflow-hidden">
+      <div className="flex flex-col lg:flex-row h-full">
         {/* Left Sidebar */}
-        <div className="w-80 bg-neutral-50 border-r border-neutral-200 flex flex-col">
+        <div className="w-full lg:w-80 bg-neutral-50 border-b lg:border-b-0 lg:border-r border-neutral-200 flex flex-col max-h-[500px] lg:max-h-none">
           {/* Header */}
-          <div className="p-5 border-b border-neutral-200">
-            <h2 className="text-xl font-semibold text-neutral-900 mb-4">Partner Locations</h2>
+          <div className="p-4 lg:p-5 border-b border-neutral-200">
+            <h2 className="text-lg lg:text-xl font-semibold text-neutral-900 mb-3 lg:mb-4">Partner Locations</h2>
 
             {/* Search Bar */}
             <div className="relative">
@@ -154,7 +154,7 @@ export default function OfficeLocator() {
 
           {/* Locations List */}
           <div className="flex-1 overflow-y-auto">
-            <div className="p-4">
+            <div className="p-3 lg:p-4">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-xs font-medium text-neutral-500 uppercase tracking-wider">Regions</span>
                 <span className="text-xs text-neutral-400">{filteredOffices.length} locations</span>
@@ -208,7 +208,7 @@ export default function OfficeLocator() {
                                     : "text-neutral-600 hover:bg-neutral-50"
                                 }`}
                               >
-                                <span>{country}</span>
+                                <span className="text-left">{country}</span>
                                 <span className={`text-xs ${isCountrySelected ? "text-green-500" : "text-neutral-400"}`}>
                                   ({countryOffices.length})
                                 </span>
@@ -227,8 +227,8 @@ export default function OfficeLocator() {
                                           : "text-neutral-500 hover:bg-neutral-50"
                                       }`}
                                     >
-                                      <Building2 className="w-3 h-3" />
-                                      <span className="truncate">{office.name}</span>
+                                      <Building2 className="w-3 h-3 flex-shrink-0" />
+                                      <span className="truncate text-left">{office.name}</span>
                                     </button>
                                   ))}
                                 </div>
@@ -246,7 +246,7 @@ export default function OfficeLocator() {
 
           {/* Selected Office Details */}
           {selectedOffice && (
-            <div className="border-t border-neutral-200 bg-white p-4">
+            <div className="border-t border-neutral-200 bg-white p-3 lg:p-4">
               <div className="flex items-center justify-between mb-3">
                 <h3 className="text-xs font-semibold text-neutral-500 uppercase tracking-wider">Office Details</h3>
                 <button
@@ -259,26 +259,26 @@ export default function OfficeLocator() {
 
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
-                  <div className="p-1.5 bg-blue-50 rounded">
-                    <MapPin className="w-4 h-4 " />
+                  <div className="p-1.5 bg-blue-50 rounded flex-shrink-0">
+                    <MapPin className="w-4 h-4" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-neutral-900 text-sm">{selectedOffice.name}</p>
-                    <p className="text-xs text-neutral-500 mt-0.5">{selectedOffice.address}</p>
+                    <p className="text-xs text-neutral-500 mt-0.5 break-words">{selectedOffice.address}</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="p-1.5 bg-green-50 rounded">
-                    <Phone className="w-4 h-4 " />
+                  <div className="p-1.5 bg-green-50 rounded flex-shrink-0">
+                    <Phone className="w-4 h-4" />
                   </div>
-                  <a href={`tel:${selectedOffice.phone}`} className="text-sm text-neutral-600 hover:text-blue-600 transition-colors">
+                  <a href={`tel:${selectedOffice.phone}`} className="text-sm text-neutral-600 hover:text-blue-600 transition-colors break-all">
                     {selectedOffice.phone}
                   </a>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="p-1.5 bg-purple-50 rounded">
+                  <div className="p-1.5 bg-purple-50 rounded flex-shrink-0">
                     <Mail className="w-4 h-4" />
                   </div>
                   <a href={`mailto:${selectedOffice.email}`} className="text-sm text-neutral-600 hover:text-blue-600 transition-colors truncate">
@@ -291,7 +291,7 @@ export default function OfficeLocator() {
         </div>
 
         {/* Right Map */}
-        <div className="flex-1 relative bg-neutral-100">
+        <div className="flex-1 relative bg-neutral-100 h-[400px] lg:h-auto">
           <iframe
             src={mapUrl}
             width="100%"
@@ -301,31 +301,31 @@ export default function OfficeLocator() {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="Office Location Map"
-            className="grayscale hover:grayscale-0 transition-all duration-500"
+            className="grayscale"
           />
 
           {/* Office markers overlay - shows clickable cards for all filtered offices */}
-          <div className="absolute top-4 right-4 space-y-2 max-h-[calc(100%-2rem)] overflow-y-auto">
+          <div className="absolute top-2 lg:top-4 right-2 lg:right-4 space-y-2 max-h-[calc(100%-1rem)] lg:max-h-[calc(100%-2rem)] overflow-y-auto">
             {filteredOffices.map((office) => (
               <button
                 key={office.id}
                 onClick={() => handleOfficeSelect(office)}
-                className={`flex items-center gap-2 px-3 py-2 bg-white rounded-lg shadow-md border transition-all text-left ${
+                className={`flex items-center gap-2 px-2 lg:px-3 py-1.5 lg:py-2 bg-white rounded-lg shadow-md border transition-all text-left ${
                   selectedOffice?.id === office.id
                     ? "border-blue-500 ring-2 ring-blue-100"
                     : "border-neutral-200 hover:border-neutral-300 hover:shadow-lg"
                 }`}
               >
-                <MapPin className={`w-4 h-4 flex-shrink-0 ${
+                <MapPin className={`w-3 h-3 lg:w-4 lg:h-4 flex-shrink-0 ${
                   selectedOffice?.id === office.id ? "text-blue-600" : "text-neutral-400"
                 }`} />
-                <div>
-                  <p className={`text-sm font-medium ${
+                <div className="min-w-0">
+                  <p className={`text-xs lg:text-sm font-medium truncate ${
                     selectedOffice?.id === office.id ? "text-blue-700" : "text-neutral-700"
                   }`}>
                     {office.name}
                   </p>
-                  <p className="text-xs text-neutral-400">{office.city}</p>
+                  <p className="text-xs text-neutral-400 truncate">{office.city}</p>
                 </div>
               </button>
             ))}
