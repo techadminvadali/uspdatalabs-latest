@@ -1,11 +1,8 @@
-
 /* Leaflet CSS for map components */
 @import url('https://unpkg.com/leaflet@1.9.4/dist/leaflet.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
 
 html,
 body {
@@ -43,9 +40,7 @@ body {
     transform: rotateY(180deg);
 }
 
-
-
-/* Orbit Animations CSS - Add this to your global.css or a separate file */
+/* Orbit Animations CSS */
 
 .orbit-container {
   position: relative;
@@ -126,6 +121,7 @@ body {
   align-items: center;
   z-index: 10;
   box-shadow: 0 0 15px rgba(59, 130, 246, 0.15);
+  overflow: hidden;
 }
 
 @media (min-width: 640px) {
@@ -146,36 +142,31 @@ body {
   }
 }
 
-/* Icon positions and animations */
+/* Icon positions and animations - Each icon on its own orbit */
+/* Icon 1: Orbit 1 (innermost) */
 .icon-1 {
   animation: orbit1 12s linear infinite;
 }
 
+/* Icon 2: Orbit 2 */
 .icon-2 {
-  animation: orbit1 12s linear infinite;
-  animation-delay: -6s;
+  animation: orbit2 16s linear infinite reverse;
 }
 
+/* Icon 3: Orbit 3 */
 .icon-3 {
-  animation: orbit2 18s linear infinite reverse;
+  animation: orbit3 20s linear infinite;
 }
 
+/* Icon 4: Orbit 4 (outermost) */
 .icon-4 {
-  animation: orbit2 18s linear infinite reverse;
-  animation-delay: -9s;
+  animation: orbit4 24s linear infinite reverse;
 }
 
+/* Icon 5: Orbit 4 (outermost, opposite side of icon-4) */
 .icon-5 {
-  animation: orbit3 24s linear infinite;
-}
-
-.icon-6 {
-  animation: orbit3 24s linear infinite;
-  animation-delay: -12s;
-}
-
-.icon-7 {
-  animation: orbit4 30s linear infinite reverse;
+  animation: orbit4 24s linear infinite reverse;
+  animation-delay: -12s; /* Start 180 degrees offset from icon-4 */
 }
 
 /* Orbit keyframes - Mobile */
@@ -252,6 +243,20 @@ body {
     from { transform: rotate(0deg) translateX(210px) rotate(0deg); }
     to { transform: rotate(360deg) translateX(210px) rotate(-360deg); }
   }
+}
+
+/* Pulse animation for center logo */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
 }
 
 /* Marquee animation for partners */

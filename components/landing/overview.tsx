@@ -7,8 +7,6 @@ import { Button } from "@/components/ui/button";
 import { formatTypingSequence } from "@/lib/utils";
 import DM_Sans from "@/lib/fonts/dm-sans";
 import Image from "next/image";
-import { SiOpenai, SiTypescript, SiPostgresql } from "react-icons/si";
-import { FaDatabase, FaCloud, FaCogs, FaRobot, FaChartLine } from "react-icons/fa";
 
 import companyOne from '../../public/company_one.webp'
 import companyThree from '../../public/company_three.png'
@@ -16,9 +14,16 @@ import companyFour from '../../public/company_four.png'
 import companyFive from '../../public/american.png'
 import companyTwo from '../../public/company_two.png'
 
+import orb1 from '../../public/orb1.png'
+import orb2 from '../../public/orb2.png'
+import orb3 from '../../public/orb3.png'
+import orb4 from '../../public/orb4.png'
+import orb5 from '../../public/obr5.png'
 
-import logo from '../../public/logoUSP.png'
+import FinalLogo from '../../public/Logo.png'
+
 import Link from "next/link";
+
 const sequence = formatTypingSequence([
   "From Raw Data to Intelligent Products - Instantly.",
   "Automation-first data platform for enterprises.",
@@ -206,7 +211,7 @@ export default function Overview() {
             </motion.div>
           </motion.div>
 
-          {/* RIGHT: SINGLE ORBIT */}
+          {/* RIGHT: ORBIT ANIMATION */}
           <motion.div
             initial="hidden"
             animate={play ? "visible" : "hidden"}
@@ -224,38 +229,65 @@ export default function Overview() {
               <div className="orbit-path orbit-path-3"></div>
               <div className="orbit-path orbit-path-4"></div>
 
-              {/* Orbit Icons */}
+              {/* Orbit Icons - Now properly distributed across all 4 orbits */}
+              {/* Orbit 1 - innermost */}
               <div className="orbit-icon icon-1">
-                <SiTypescript className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-blue-400" />
+                <Image 
+                  src={orb1} 
+                  alt="orb1" 
+                  fill
+                  className="object-cover rounded-full" 
+                />
               </div>
+              
+              {/* Orbit 2 */}
               <div className="orbit-icon icon-2">
-                <FaDatabase className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-blue-400" />
+                <Image 
+                  src={orb2} 
+                  alt="orb2" 
+                  fill
+                  className="object-cover rounded-full" 
+                />
               </div>
+              
+              {/* Orbit 3 */}
               <div className="orbit-icon icon-3">
-                <FaCloud className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-blue-400" />
+                <Image 
+                  src={orb3} 
+                  alt="orb3" 
+                  fill
+                  className="object-cover rounded-full" 
+                />
               </div>
+              
+              {/* Orbit 4 - outermost */}
               <div className="orbit-icon icon-4">
-                <SiPostgresql className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-blue-400" />
+                <Image 
+                  src={orb4} 
+                  alt="orb4" 
+                  fill
+                  className="object-cover rounded-full" 
+                />
               </div>
+              
+              {/* Orbit 4 - second icon on outermost (opposite side) */}
               <div className="orbit-icon icon-5">
-                <SiOpenai className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-blue-400" />
-              </div>
-              <div className="orbit-icon icon-6">
-                <FaCogs className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-blue-400" />
-              </div>
-              <div className="orbit-icon icon-7">
-                <FaChartLine className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-blue-400" />
+                <Image 
+                  src={orb5} 
+                  alt="orb5" 
+                  fill
+                  className="object-cover rounded-full" 
+                />
               </div>
 
               {/* Center Icon */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
-                <div className="bg-gradient-to-br from-blue-500 to-blue-700 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center shadow-2xl shadow-blue-500/40 border-2 border-blue-400/30">
-                  {/* <FaRobot className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white" /> */}
+                <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center shadow-2xl shadow-blue-500/40 border-2 border-blue-400/30">
                   <Image
-                    src={logo}
-                    alt="Center Glow"
-                    layout="fill"
-                    className="absolute top-0 left-0 w-full h-full object-cover rounded-full opacity-75 animate-pulse-slow"
+                    src={FinalLogo}
+                    alt="Center Logo"
+                    fill
+                    className="object-cover rounded-full opacity-75 animate-pulse-slow"
                   />
                 </div>
               </div>
