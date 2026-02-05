@@ -21,13 +21,13 @@ import AnimatedGridPattern from "@/components/magicui/animated-grid-pattern";
 const features = [
   {
     Icon: Zap,
-    name: "Automation ",
+    name: "Automation",
     description: "Drive ingestion, quality, transformation, governance, and AI workflows through configuration — not engineering.",
     className: "col-span-3 lg:col-span-2",
     background: (
       <div className="flex justify-center content-center h-full w-full">
         <div className="m-auto p-10 z-10">
-          <div className="text-4xl font-medium text-black text-center">
+          <div className="text-4xl font-medium bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent text-center">
             Zero-Code
             <br />
             Orchestration
@@ -53,7 +53,7 @@ const features = [
           <div className="text-2xl font-medium text-black text-center">
             Deployless
             <br />
-          Engine
+            Engine
           </div>
         </div>
         <Ripple />
@@ -91,7 +91,7 @@ const features = [
     background: (
       <div className="flex justify-center content-center h-full w-full">
         <div className="m-auto p-8 z-10">
-          <div className="text-3xl font-medium text-black text-center">
+          <div className="text-3xl font-medium bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent text-center">
             Domain-Driven
             <br />
             Automation
@@ -110,11 +110,10 @@ const features = [
       </div>
     ),
   },
- 
   {
     Icon: Shield,
     name: "Central Governance Without Friction",
-    description: "Enforce trust , Role-based access at the most granular business function level through intuitive UI and metadata policies.",
+    description: "Enforce trust, Role-based access at the most granular business function level through intuitive UI and metadata policies.",
     className: "col-span-3 lg:col-span-1",
     background: (
       <div className="flex justify-center content-center h-full w-full">
@@ -132,12 +131,12 @@ const features = [
   {
     Icon: Bot,
     name: "GenAI App Builder",
-    description: "Build secure, enterprise-grade GenAI copilots and assistants — No Engineering effort ,No Managemnet of Pipelines ",
+    description: "Build secure, enterprise-grade GenAI copilots and assistants — No Engineering effort, No Management of Pipelines",
     className: "col-span-3 lg:col-span-1",
     background: (
       <div className="flex justify-center content-center h-full w-full">
         <div className="m-auto p-8 z-10">
-          <div className="text-2xl font-medium text-black text-center">
+          <div className="text-2xl font-medium bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent text-center">
             GenAI-Native
             <br />
             Platform
@@ -185,7 +184,9 @@ export default function Feature() {
   return (
     <div id="platform" className={`${DM_Sans.className} mt-10`}>
       <div className="text-center mb-12">
-        <h1 className="text-5xl font-bold mb-6">Platform Highlights</h1>
+        <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent">
+          Platform Highlights
+        </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
           A next-gen automation-first data platform built to compress engineering cycles, reduce TCO, and fast-track AI & GenAI journeys.
         </p>

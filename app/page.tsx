@@ -65,8 +65,8 @@ export default function Page() {
             </ParallaxSection>
           </div>
 
-  {/* Architecture Section */}
-  <div className="relative z-20 bg-gradient-to-b from-white to-gray-50">
+          {/* Architecture Section */}
+          <div className="relative z-20 bg-gradient-to-b from-white to-gray-50">
             <ParallaxSection 
               speed={0.5} 
               fadeIn={true}
@@ -78,12 +78,7 @@ export default function Page() {
               </div>
               <SectionSpacer size="lg" />
             </ParallaxSection>
-          </div>
-
-
-
-
-      
+          </div>      
           {/* Use Case Impact Section */}
           <div className="relative z-30 bg-white">
             <ParallaxSection 

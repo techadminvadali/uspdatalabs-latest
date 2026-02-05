@@ -17,7 +17,7 @@ const beliefs = [
     background: (
       <div className="flex justify-center content-center h-full w-full">
         <div className="m-auto p-8 z-10">
-          <div className="text-2xl font-medium text-black text-center">
+          <div className="text-2xl font-medium bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent text-center">
             Simplify
             <br />
             Everything
@@ -45,7 +45,7 @@ const beliefs = [
     background: (
       <div className="flex justify-center content-center h-full w-full">
         <div className="m-auto p-8 z-10">
-          <div className="text-2xl font-medium text-black text-center">
+          <div className="text-2xl font-medium bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent text-center">
             Automate
             <br />
             Everything
@@ -73,7 +73,7 @@ const beliefs = [
     background: (
       <div className="flex justify-center content-center h-full w-full">
         <div className="m-auto p-8 z-10">
-          <div className="text-2xl font-medium text-black text-center">
+          <div className="text-2xl font-medium bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent text-center">
             Productize
             <br />
             Everything
@@ -121,8 +121,6 @@ const values = [
   }
 ];
 
-
-
 const stats = [
   {
     icon: Clock,
@@ -162,13 +160,13 @@ export default function AboutVision() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className={`text-5xl font-bold mb-6 text-gray-800 ${DM_Sans.className}`}>
+          <h2 className={`text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent ${DM_Sans.className}`}>
             Our Belief
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
             We believe the future of data isn&apos;t about writing more code. It&apos;s about writing less — or none at all.
           </p>
-          <div className="bg-gray-50 rounded-2xl p-8 max-w-4xl mx-auto">
+          <div className="bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 rounded-2xl p-8 max-w-4xl mx-auto border border-orange-100">
             <p className="text-lg text-gray-700 leading-relaxed">
               At USP DataLabs, we exist to eliminate the complexity that&apos;s held organizations back for decades. 
               Legacy pipelines, bloated DevOps, and fragile handoffs make every data initiative expensive, risky, and slow.
@@ -184,7 +182,9 @@ export default function AboutVision() {
           viewport={{ once: true }}
           className="mb-20"
         >
-          <h3 className="text-3xl font-bold text-center text-gray-800 mb-8">We believe in flipping that model on its head:</h3>
+          <h3 className="text-3xl font-bold text-center bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent mb-8">
+            We believe in flipping that model on its head:
+          </h3>
           <BentoGrid>
             {beliefs.map((belief, idx) => (
               <BentoCard key={idx} {...belief} />
@@ -201,7 +201,9 @@ export default function AboutVision() {
           className="mb-20"
         >
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-gray-800 mb-4">Our Principles</h3>
+            <h3 className="text-3xl font-bold bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent mb-4">
+              Our Principles
+            </h3>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               These principles guide everything we do, from product development to customer success.
             </p>
@@ -218,8 +220,8 @@ export default function AboutVision() {
                 className="group relative bg-white p-6 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 h-full flex flex-col"
               >
                 <div className="text-center flex-1 flex flex-col">
-                  <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-50 transition-colors duration-300">
-                    <value.icon className="w-8 h-8 text-blue-600 group-hover:scale-110 transition-transform duration-300" />
+                  <div className="w-16 h-16 bg-orange-50 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-orange-100 transition-colors duration-300">
+                    <value.icon className="w-8 h-8 text-orange-500 group-hover:scale-110 transition-transform duration-300" />
                   </div>
                   <h4 className="text-xl font-semibold text-gray-800 mb-3">{value.title}</h4>
                   <p className="text-gray-600 mb-3 flex-1">{value.description}</p>
@@ -232,13 +234,13 @@ export default function AboutVision() {
                       <div className="absolute -bottom-4 left-0 right-0 h-4 bg-gradient-to-t from-white to-transparent group-hover:opacity-0 transition-opacity duration-300"></div>
                     </div>
                     <button 
-                      className="mt-3 text-sm text-blue-600 font-medium flex flex-col items-center mx-auto group-hover:opacity-0 transition-opacity duration-200"
+                      className="mt-3 text-sm text-orange-600 font-medium flex flex-col items-center mx-auto group-hover:opacity-0 transition-opacity duration-200"
                       aria-label="Show more"
-                    ><svg className="w-4 h-4 mt-1 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-                  </svg>
+                    >
+                      <svg className="w-4 h-4 mt-1 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                      </svg>
                       <span>Learn more</span>
-                      
                     </button>
                   </div>
                 </div>
@@ -256,7 +258,9 @@ export default function AboutVision() {
           className="mb-20"
         >
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-gray-800 mb-4">Proven Impact</h3>
+            <h3 className="text-3xl font-bold bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent mb-4">
+              Proven Impact
+            </h3>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Real results from real customers across industries and use cases.
             </p>
@@ -272,18 +276,16 @@ export default function AboutVision() {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-200 to-purple-300 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-20 h-20 bg-gradient-to-br from-orange-400 to-amber-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <stat.icon className="w-10 h-10 text-white" />
                 </div>
-                <div className="text-4xl font-bold text-gray-800 mb-2">{stat.value}</div>
+                <div className="text-4xl font-bold bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent mb-2">{stat.value}</div>
                 <div className="text-lg font-semibold text-gray-700 mb-2">{stat.label}</div>
                 <div className="text-sm text-gray-600">{stat.description}</div>
               </motion.div>
             ))}
           </div>
         </motion.div>
-
-   
 
         {/* CTA */}
         <motion.div
@@ -293,19 +295,23 @@ export default function AboutVision() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <div className="bg-gray-800 rounded-2xl p-12 text-white">
-            <h3 className="text-3xl font-bold mb-4">Ready to Transform Your Data Journey?</h3>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Join the companies already seeing 80% cost reduction and 5x faster delivery.
-            </p>
-            <button className="bg-white text-gray-800 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold flex items-center space-x-2 mx-auto transition-all duration-300 hover:scale-105">
-              <span>Get Started Today</span>
-              <ArrowRight className="w-5 h-5" />
-            </button>
+          <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl p-12 text-white relative overflow-hidden">
+            {/* Subtle gradient accent */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-500/20 to-amber-500/20 rounded-full blur-3xl"></div>
+            
+            <div className="relative z-10">
+              <h3 className="text-3xl font-bold mb-4">Ready to Transform Your Data Journey?</h3>
+              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                Join the companies already seeing 80% cost reduction and 5x faster delivery.
+              </p>
+              <button className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white px-8 py-4 rounded-lg font-semibold flex items-center space-x-2 mx-auto transition-all duration-300 hover:scale-105 shadow-lg">
+                <span>Get Started Today</span>
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </motion.div>
       </div>
     </div>
   );
 }
-

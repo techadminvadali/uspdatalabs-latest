@@ -50,7 +50,7 @@ export default function UseCaseImpact() {
           viewport={{ once: true }}
           className="text-center mb-12 md:mb-16 relative"
         >
-          <h2 className={`text-3xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-800 ${DM_Sans.className}`}>
+          <h2 className={`text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent ${DM_Sans.className}`}>
             Real Impact, Real Results
           </h2>
           <p className="text-base md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">
@@ -75,7 +75,9 @@ export default function UseCaseImpact() {
           className="bg-gray-50 rounded-2xl p-6 md:p-12 mb-12 md:mb-16"
         >
           <div className="text-center mb-6 md:mb-8">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-3 md:mb-4">Client Success Story</h3>
+            <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent mb-3 md:mb-4">
+              Client Success Story
+            </h3>
             <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto px-2">
               <strong className="text-gray-800">20TB of data, 1000+ pipelines, €2M estimated migration cost</strong> — delivered in 4 months with 4 engineers at 80% lower TCO.
             </p>
@@ -94,7 +96,7 @@ export default function UseCaseImpact() {
                   className="p-6 border-b md:border-b-0 md:border-r border-gray-200 last:border-b-0 md:last:border-r-0 lg:border-b-0"
                 >
                   <div className="text-center">
-                    <metric.icon className="w-8 h-8 mx-auto mb-3 text-gray-600" />
+                    <metric.icon className="w-8 h-8 mx-auto mb-3 text-orange-500" />
                     <h3 className="font-semibold text-gray-700 mb-4">{metric.label}</h3>
                     
                     <div className="space-y-3">
@@ -108,7 +110,7 @@ export default function UseCaseImpact() {
                         <div className="font-medium text-gray-800">{metric.usp}</div>
                       </div>
                       
-                      <div className="text-sm font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                      <div className="text-sm font-bold text-orange-600 bg-orange-50 px-3 py-1 rounded-full">
                         {metric.improvement}
                       </div>
                     </div>
@@ -117,8 +119,6 @@ export default function UseCaseImpact() {
               ))}
             </div>
           </div>
-
-        
         </motion.div>
       </div>
     </div>

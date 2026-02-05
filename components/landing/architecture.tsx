@@ -1,5 +1,4 @@
 'use client';
-
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
@@ -15,7 +14,7 @@ export default function Architecture() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent">
             Platform Architecture
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -58,23 +57,40 @@ export default function Architecture() {
           >
             {/* Architecture Layers */}
             <div className="space-y-6">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+              <h3 className="text-2xl font-semibold bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent mb-6">
                 Multi-Layered Architecture
               </h3>
               <p className="text-gray-600 mb-4">
                 Our comprehensive data platform is built on a multi-layered architecture 
                 designed for scalability, governance, and seamless data movement.
               </p>
-              <ul className="list-disc list-inside text-gray-600"> 
-                <li>Data Ingestion</li>
-                <li>Data Transformation</li>
-                <li>Data Governance</li>
-                <li>Data Movement</li>
-                <li>Data Storage</li>
-                <li>Data Analytics</li>
+              <ul className="space-y-3 text-gray-600">
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-500 to-amber-500"></span>
+                  Data Ingestion
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-500 to-amber-500"></span>
+                  Data Transformation
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-500 to-amber-500"></span>
+                  Data Governance
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-500 to-amber-500"></span>
+                  Data Movement
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-500 to-amber-500"></span>
+                  Data Storage
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-500 to-amber-500"></span>
+                  Data Analytics
+                </li>
               </ul>
-
-           </div>
+            </div>
           </motion.div>
         </div>
       </div>

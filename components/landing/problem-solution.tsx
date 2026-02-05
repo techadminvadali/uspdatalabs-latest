@@ -11,8 +11,6 @@ import WordRotate from "@/components/magicui/word-rotate";
 import Ripple from "@/components/magicui/ripple";
 import { cn } from "@/lib/utils";
 
-
-
 const journeys = [
   {
     icon: Users,
@@ -51,6 +49,7 @@ const journeys = [
     details: "Create APIs, dashboards, and applications that turn your data assets into new business opportunities."
   }
 ];  
+
 const problems = [
   {
     icon: AlertTriangle,
@@ -62,7 +61,7 @@ const problems = [
     background: (
       <div className="flex justify-center content-center h-full w-full">
         <div className="m-auto p-8 z-10">
-          <div className="text-2xl font-medium text-black text-center">
+          <div className="text-2xl font-medium bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent text-center">
             Data
             <br />
             Silos
@@ -91,7 +90,7 @@ const problems = [
     background: (
       <div className="flex justify-center content-center h-full w-full">
         <div className="m-auto p-8 z-10">
-          <div className="text-2xl font-medium text-black text-center">
+          <div className="text-2xl font-medium bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent text-center">
             Mesh
             <br />
             Complexity
@@ -120,7 +119,7 @@ const problems = [
     background: (
       <div className="flex justify-center content-center h-full w-full">
         <div className="m-auto p-8 z-10">
-          <div className="text-2xl font-medium text-black text-center">
+          <div className="text-2xl font-medium bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent text-center">
             AI
             <br />
             Readiness
@@ -149,7 +148,7 @@ const problems = [
     background: (
       <div className="flex justify-center content-center h-full w-full">
         <div className="m-auto p-8 z-10">
-          <div className="text-2xl font-medium text-black text-center">
+          <div className="text-2xl font-medium bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent text-center">
             Cost
             <br />
             Control
@@ -178,7 +177,7 @@ const problems = [
     background: (
       <div className="flex justify-center content-center h-full w-full">
         <div className="m-auto p-8 z-10">
-          <div className="text-2xl font-medium text-black text-center">
+          <div className="text-2xl font-medium bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent text-center">
             Legacy
             <br />
             Integration
@@ -207,7 +206,7 @@ const problems = [
     background: (
       <div className="flex justify-center content-center h-full w-full">
         <div className="m-auto p-8 z-10">
-          <div className="text-2xl font-medium text-black text-center">
+          <div className="text-2xl font-medium bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent text-center">
             Governance
             <br />
             Gap
@@ -282,7 +281,7 @@ export default function ProblemSolution() {
               />
             </div>
             <div className="relative z-10">
-              <h2 className={`text-4xl font-bold mb-4 text-gray-800 ${DM_Sans.className}`}>
+              <h2 className={`text-4xl font-bold mb-4 bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent ${DM_Sans.className}`}>
                 Why Enterprises Struggle
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -304,14 +303,14 @@ export default function ProblemSolution() {
                     </div>
                     
                     {/* Hover overlay with description */}
-                    <div className="absolute inset-0  bg-[#f5f3f1] rounded-2xl p-6 border border-gray-200 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                    <div className="absolute inset-0 bg-[#f5f3f1] rounded-2xl p-6 border border-gray-200 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                       <div className="h-full flex flex-col justify-center">
                         <div className="text-center mb-4">
-                                    <h3 className="text-xl font-bold text-gray-800 mb-3">{problem.title}</h3>
+                          <h3 className="text-xl font-bold text-gray-800 mb-3">{problem.title}</h3>
                         </div>
                         <p className="text-gray-600 text-sm leading-relaxed mb-4">{problem.details}</p>
-                        <div className="bg-red-50 border-l-4 border-red-400 p-3 rounded">
-                          <p className="text-red-700 text-sm font-medium">{problem.impact}</p>
+                        <div className="bg-orange-50 border-l-4 border-orange-400 p-3 rounded">
+                          <p className="text-orange-700 text-sm font-medium">{problem.impact}</p>
                         </div>
                       </div>
                     </div>
@@ -332,7 +331,7 @@ export default function ProblemSolution() {
         >
           {/* Background Elements */}
           <div className="absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-blue-50"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white to-amber-50"></div>
             <AnimatedGridPattern
               numSquares={60}
               maxOpacity={0.05}
@@ -344,7 +343,7 @@ export default function ProblemSolution() {
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className={`text-4xl font-bold text-gray-900 sm:text-5xl ${DM_Sans.className}`}>
+              <h2 className={`text-4xl font-bold sm:text-5xl bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent ${DM_Sans.className}`}>
                 The Future of Data Automation
               </h2>
               <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
@@ -363,20 +362,20 @@ export default function ProblemSolution() {
                   className="group relative bg-gray-300/20 rounded-2xl p-6 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 overflow-hidden"
                 >
                   {/* Glow Effect */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-20 blur transition duration-300"></div>
+                  <div className="absolute -inset-1 bg-gradient-to-r from-orange-400 to-amber-500 rounded-2xl opacity-0 group-hover:opacity-20 blur transition duration-300"></div>
                   
                   {/* Card Content */}
                   <div className="relative">
                     {/* Badge */}
                     <div className="absolute -top-10 right-0 w-20 h-20 opacity-10">
-                      <svg viewBox="0 0 100 100" className="text-blue-600 w-full h-full">
+                      <svg viewBox="0 0 100 100" className="text-orange-500 w-full h-full">
                         <path d="M20,20 L80,20 L80,80 L20,80 Z" fill="currentColor" />
                       </svg>
                     </div>
                     
                     {/* Icon */}
-                    <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-100 transition-colors duration-300">
-                      <div className="w-8 h-8 bg-black text-white rounded-lg flex items-center justify-center text-white font-bold">
+                    <div className="w-14 h-14 bg-orange-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-orange-100 transition-colors duration-300">
+                      <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-amber-500 text-white rounded-lg flex items-center justify-center font-bold">
                         {index + 1}
                       </div>
                     </div>
@@ -396,24 +395,22 @@ export default function ProblemSolution() {
                               <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
                             </svg>
                           </div>
-                          <p className="text-sm text-gray-500 ">{solution.traditional}</p>
+                          <p className="text-sm text-gray-500">{solution.traditional}</p>
                         </div>
-                      
                       </div>
                     </div>
                     
                     {/* Hover Effect */}
-                    <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-blue-200 pointer-events-none transition-all duration-300"></div>
+                    <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-orange-200 pointer-events-none transition-all duration-300"></div>
                   </div>
                 </motion.div>
               ))}
             </div>
-            
- 
+
             {/* CTA */}
             <div className="mt-16 text-center">
               <p className="text-lg text-gray-600 mb-6">Ready to transform your data operations?</p>
-              <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300">
+              <button className="px-8 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:from-orange-600 hover:to-amber-600 transform hover:-translate-y-0.5 transition-all duration-300">
                 <a href="/about">Schedule a Demo</a>
                 <span className="ml-2">→</span>
               </button>
@@ -421,11 +418,8 @@ export default function ProblemSolution() {
           </div>
         </motion.div>
 
-
-
-
-    {/* Journey Support */}
-    <motion.div
+        {/* Journey Support */}
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -433,7 +427,9 @@ export default function ProblemSolution() {
           className="bg-gray-50 rounded-2xl p-12"
         >
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-gray-800 mb-4">Built for Every Journey</h3>
+            <h3 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent mb-4">
+              Built for Every Journey
+            </h3>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Whether you&apos;re migrating from on-prem, building your first GenAI app, or scaling across business domains — 
               we help you move faster, cheaper, and smarter, without hiring an army of engineers.
@@ -451,25 +447,17 @@ export default function ProblemSolution() {
                 className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <journey.icon className="w-8 h-8 text-blue-600" />
+                  <div className="w-16 h-16 bg-orange-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <journey.icon className="w-8 h-8 text-orange-500" />
                   </div>
                   <h4 className="text-xl font-semibold text-gray-800 mb-3">{journey.title}</h4>
                   <p className="text-gray-600 mb-3">{journey.description}</p>
-                  
                 </div>
               </motion.div>
             ))}
           </div>
         </motion.div>
-
-
-
-
-
-
       </div>
     </div>
   );
 }
-

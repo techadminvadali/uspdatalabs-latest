@@ -17,7 +17,6 @@ import { formatTypingSequence } from "@/lib/utils";
 const advantageSequence = formatTypingSequence([
   "USP Data Labs - A True Business Advantage",
   "Transform Your Data Operations Today",
- 
 ]);
 
 export default function Contact() {
@@ -125,7 +124,7 @@ export default function Contact() {
             />
           </div>
           <div className="relative z-10">
-            <h1 className={`text-5xl font-bold mb-6 text-gray-800 ${DM_Sans.className}`}>
+            <h1 className={`text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent ${DM_Sans.className}`}>
               Get in Touch
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -144,7 +143,7 @@ export default function Contact() {
             className="space-y-8"
           >
             <div>
-              <h2 className={`text-3xl font-bold mb-6 text-gray-800 ${DM_Sans.className}`}>
+              <h2 className={`text-3xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent ${DM_Sans.className}`}>
                 Let&apos;s Start a Conversation
               </h2>
               <p className="text-lg text-gray-600 mb-8">
@@ -154,8 +153,8 @@ export default function Contact() {
 
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-6 h-6 text-orange-500" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-1">Email Us</h3>
@@ -165,8 +164,8 @@ export default function Contact() {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-6 h-6 text-orange-500" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-1">Call Us</h3>
@@ -176,8 +175,8 @@ export default function Contact() {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-6 h-6 text-orange-500" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-1">Visit Us</h3>
@@ -187,7 +186,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-50 to-gray-50 rounded-xl p-6 relative overflow-hidden">
+            <div className="bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 rounded-xl p-6 relative overflow-hidden border border-orange-100">
               <div className="absolute inset-0">
                 <AnimatedGridPattern
                   numSquares={20}
@@ -200,16 +199,16 @@ export default function Contact() {
                 />
               </div>
               <div className="relative z-10">
-                <h3 className="font-bold text-blue-600 text-2xl text-center mb-2">
+                <h3 className="font-bold text-2xl text-center mb-2">
                   <TypeAnimation
                     preRenderFirstString={true}
                     speed={50}
                     repeat={Infinity}
                     sequence={advantageSequence}
-                    className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
+                    className="bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent"
                   />
                 </h3>
-                              </div>
+              </div>
             </div>
           </motion.div>
 
@@ -258,7 +257,7 @@ export default function Contact() {
                       required
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full"
+                      className="w-full focus:ring-orange-500 focus:border-orange-500"
                       placeholder="Your full name"
                     />
                   </div>
@@ -273,7 +272,7 @@ export default function Contact() {
                       required
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full"
+                      className="w-full focus:ring-orange-500 focus:border-orange-500"
                       placeholder="your.email@company.com"
                     />
                   </div>
@@ -290,7 +289,7 @@ export default function Contact() {
                       type="text"
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="w-full"
+                      className="w-full focus:ring-orange-500 focus:border-orange-500"
                       placeholder="Your company name"
                     />
                   </div>
@@ -304,7 +303,7 @@ export default function Contact() {
                       type="tel"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full"
+                      className="w-full focus:ring-orange-500 focus:border-orange-500"
                       placeholder="+1 (555) 123-4567"
                     />
                   </div>
@@ -321,7 +320,7 @@ export default function Contact() {
                     required
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className="w-full"
+                    className="w-full focus:ring-orange-500 focus:border-orange-500"
                     placeholder="What can we help you with?"
                   />
                 </div>
@@ -336,7 +335,7 @@ export default function Contact() {
                     required
                     value={formData.message}
                     onChange={handleInputChange}
-                    className="w-full min-h-[120px]"
+                    className="w-full min-h-[120px] focus:ring-orange-500 focus:border-orange-500"
                     placeholder="Tell us about your data challenges, goals, or any questions you have..."
                   />
                 </div>
@@ -345,7 +344,7 @@ export default function Contact() {
                 <div className="flex justify-center">
                   <ReCAPTCHA
                     ref={recaptchaRef}
-                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"} // Test key - replace with your real key
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"}
                     onChange={handleRecaptchaChange}
                     theme="light"
                     size="normal"
@@ -370,7 +369,7 @@ export default function Contact() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-semibold rounded-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white py-3 text-lg font-semibold rounded-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <div className="flex items-center space-x-2">
