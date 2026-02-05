@@ -16,11 +16,9 @@ export default function Page() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Small delay to ensure all assets are loaded
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 100);
-
     return () => clearTimeout(timer);
   }, []);
 
@@ -30,19 +28,17 @@ export default function Page() {
         <Header />
         <div className="w-full">
           {/* Hero Section - Full Screen */}
-          <div className="relative z-10 ">
-         
-              <Overview />
-              <SectionSpacer size="lg" />
-      
+          <div className="relative z-10">
+            <Overview />
+            <SectionSpacer size="lg" />
           </div>
-     
+
           {/* Platform Highlights Section */}
           <div className="relative z-20 bg-gradient-to-b from-white to-gray-50">
             <ParallaxSection 
-              speed={0.5} 
+              speed={0.3} 
               fadeIn={true}
-              scaleEffect={true}
+              scaleEffect={false}
               className="py-16 md:py-24"
             >
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,9 +51,9 @@ export default function Page() {
           {/* Platform Demo Section */}
           <div className="relative z-20 bg-white">
             <ParallaxSection 
-              speed={0.5} 
+              speed={0.3} 
               fadeIn={true}
-              scaleEffect={true}
+              scaleEffect={false}
               className="py-16 md:py-24"
             >
               <PlatformDemo />
@@ -68,9 +64,9 @@ export default function Page() {
           {/* Architecture Section */}
           <div className="relative z-20 bg-gradient-to-b from-white to-gray-50">
             <ParallaxSection 
-              speed={0.5} 
+              speed={0.3} 
               fadeIn={true}
-              scaleEffect={true}
+              scaleEffect={false}
               className="py-16 md:py-24"
             >
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -79,41 +75,35 @@ export default function Page() {
               <SectionSpacer size="lg" />
             </ParallaxSection>
           </div>      
+
           {/* Use Case Impact Section */}
           <div className="relative z-30 bg-white">
             <ParallaxSection 
-              speed={0.6} 
+              speed={0.3} 
               id="use-case-impact"
               fadeIn={true}
-     
+              scaleEffect={false}
             >
               <UseCaseImpact />
               <SectionSpacer size="lg" />
             </ParallaxSection>
           </div>
-          
+
           {/* Why Now Section */}
           <div className="relative z-40 bg-gray-50">
             <ParallaxSection 
-              speed={0.7} 
+              speed={0.3} 
               id="why-now"
               fadeIn={true}
+              scaleEffect={false}
               blurEffect={false}
-             
             >
               <WhyNow />
               <SectionSpacer size="sm" />
             </ParallaxSection>
           </div>
-
-
-
-
-
-
         </div>
         <Footer />
-        
       </GlowCapture>
     </div>
   );

@@ -1,5 +1,4 @@
 'use client';
-
 import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { cn } from '@/lib/utils';
@@ -21,7 +20,7 @@ export function ParallaxSection({
   className,
   id,
   fadeIn = true,
-  scaleEffect = true,
+  scaleEffect = false, // Changed default to false
   rotateEffect = false,
   blurEffect = false,
 }: ParallaxSectionProps) {
@@ -32,7 +31,6 @@ export function ParallaxSection({
   });
 
   const sectionRef = useRef<HTMLDivElement>(null);
-  const lastScrollY = useRef(0);
   const animationFrameId = useRef<number | undefined>(undefined);
 
   useEffect(() => {
@@ -44,8 +42,7 @@ export function ParallaxSection({
 
     const handleScroll = () => {
       if (!sectionRef.current) return;
-      
-      // Use requestAnimationFrame for smoother animations
+
       if (animationFrameId.current) {
         window.cancelAnimationFrame(animationFrameId.current);
       }
@@ -55,40 +52,29 @@ export function ParallaxSection({
         const sectionTop = sectionRef.current!.offsetTop;
         const sectionHeight = sectionRef.current!.offsetHeight;
         const windowHeight = window.innerHeight;
-        
-        // Calculate scroll progress through the section (0 to 1)
+
         let progress = (scrollY - sectionTop + windowHeight) / (windowHeight + sectionHeight);
         progress = Math.max(0, Math.min(1, progress));
+
+        // Simplified parallax - only use translateY with rounded values to avoid sub-pixel rendering
+        const translateY = Math.round((1 - progress) * (50 * speed));
         
-        // Enhanced parallax effect with direction detection
-        const scrollDirection = scrollY > lastScrollY.current ? 1 : -1;
-        lastScrollY.current = scrollY;
+        // Only apply scale if explicitly enabled, and use values that won't cause blur
+        const scale = scaleEffect ? (progress < 0.5 ? 1 : 1) : 1; // Effectively disabled
         
-        // Apply multiple effects based on props
-        const translateY = (1 - progress) * (150 * speed * scrollDirection);
-        const scale = scaleEffect ? 0.95 + (progress * 0.1) : 1;
-        const rotate = rotateEffect ? (progress - 0.5) * 2 : 0;
-        // Only apply blur if blurEffect is explicitly true
-        const blur = blurEffect ? Math.min(5 * (1 - progress), 5) : 0;
-        const opacity = fadeIn ? progress : 1;
-        
-        // Reset filter if blur is not enabled
-        if (!blurEffect) {
-          sectionRef.current!.style.filter = 'none';
-        }
-        
-        sectionRef.current!.style.transform = `translate3d(0, ${translateY}px, 0) scale(${scale}) rotate(${rotate}deg)`;
+        const opacity = fadeIn ? Math.min(progress * 1.5, 1) : 1;
+
+        // Use integer pixel values to prevent sub-pixel blur
+        sectionRef.current!.style.transform = `translateY(${translateY}px)`;
         sectionRef.current!.style.opacity = `${opacity}`;
-        // Only apply blur if blurEffect is explicitly true
-        if (blurEffect) {
-          sectionRef.current!.style.filter = `blur(${blur}px)`;
-        }
+        
+        // Remove any blur filter
+        sectionRef.current!.style.filter = 'none';
       });
     };
 
-    // Add passive scroll listener for better performance
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial call
+    handleScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -96,19 +82,17 @@ export function ParallaxSection({
         window.cancelAnimationFrame(animationFrameId.current);
       }
     };
-  }, [inView, speed, fadeIn, scaleEffect, rotateEffect, blurEffect]);
+  }, [inView, speed, fadeIn, scaleEffect]);
 
   return (
     <div 
       ref={(node) => {
-        // @ts-ignore - This is a workaround for multiple refs
         ref(node);
         // @ts-ignore
         sectionRef.current = node;
       }}
       className={cn(
-        'will-change-transform transition-all duration-1000 ease-out',
-        'transform-gpu', // Force hardware acceleration
+        'transition-opacity duration-700 ease-out',
         {
           'opacity-0': fadeIn && !isVisible,
           'opacity-100': fadeIn && isVisible,
@@ -116,6 +100,10 @@ export function ParallaxSection({
         className
       )}
       id={id}
+      style={{
+        backfaceVisibility: 'hidden',
+        WebkitFontSmoothing: 'antialiased',
+      }}
     >
       {children}
     </div>

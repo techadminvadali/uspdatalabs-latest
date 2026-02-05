@@ -20,7 +20,7 @@ const challenges = [
     description: (
       <div className="relative">
         <div className="flex items-center justify-center -mt-12 md:-mt-16 lg:-mt-20 pb-3 md:pb-5">
-          <Image src="/Arrow.svg" alt="" width={64} height={64} className="h-10 w-10 md:h-14 md:w-14 lg:h-16 lg:w-16" />
+          <Image src="/Arrow_Two.svg" alt="" width={64} height={64} className="h-10 w-10 md:h-14 md:w-14 lg:h-16 lg:w-16" />
         </div>
         <div className="text-sm md:text-base">GenAI projects stall in RAG complexity and compliance worries</div>
       </div>
@@ -55,7 +55,7 @@ const challenges = [
     description: (
       <div className="relative">
         <div className="flex items-center justify-center -mt-12 md:-mt-16 lg:-mt-20 pb-3 md:pb-5">
-          <Image src="/Arrow.svg" alt="" width={64} height={64} className="h-10 w-10 md:h-14 md:w-14 lg:h-16 lg:w-16" />
+          <Image src="/Arrow_Two.svg" alt="" width={64} height={64} className="h-10 w-10 md:h-14 md:w-14 lg:h-16 lg:w-16" />
         </div>
         <div className="text-sm md:text-base">Heavy engineering effort and human-driven complexity delay transformation journeys</div>
       </div>
@@ -90,7 +90,7 @@ const challenges = [
     description: (
       <div className="relative">
         <div className="flex items-center justify-center -mt-12 md:-mt-16 lg:-mt-20 pb-3 md:pb-5">
-          <Image src="/Arrow.svg" alt="" width={64} height={64} className="h-10 w-10 md:h-14 md:w-14 lg:h-16 lg:w-16" />
+          <Image src="/Arrow_Two.svg" alt="" width={64} height={64} className="h-10 w-10 md:h-14 md:w-14 lg:h-16 lg:w-16" />
         </div>
         <div className="text-sm md:text-base">Fragmented toolchains create tech debt faster than transformation</div>
       </div>
@@ -125,7 +125,7 @@ const challenges = [
     description: (
       <div className="relative">
         <div className="flex items-center justify-center -mt-12 md:-mt-16 lg:-mt-20 pb-3 md:pb-5">
-          <Image src="/Arrow.svg" alt="" width={64} height={64} className="h-10 w-10 md:h-14 md:w-14 lg:h-16 lg:w-16" />
+          <Image src="/Arrow_Two.svg" alt="" width={64} height={64} className="h-10 w-10 md:h-14 md:w-14 lg:h-16 lg:w-16" />
         </div>
         <div className="text-sm md:text-base">Data transformation is the mountain slowing AI/GenAI adoption.</div>
       </div>
