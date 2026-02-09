@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,8 +19,17 @@ const advantageSequence = formatTypingSequence([
   "Transform Your Data Operations Today",
 ]);
 
+// EU country codes
+const EU_COUNTRIES = [
+  'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR',
+  'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL',
+  'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE'
+];
+
 export default function Contact() {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [isEULocation, setIsEULocation] = useState(false);
+  const [locationDetected, setLocationDetected] = useState(false);
   
   const [formData, setFormData] = useState({
     name: "",
@@ -35,6 +44,34 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+
+  // Detect user location on component mount
+  useEffect(() => {
+    const detectLocation = async () => {
+      try {
+        // Try to get location from IP geolocation API
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        
+        if (data.country_code && EU_COUNTRIES.includes(data.country_code)) {
+          setIsEULocation(true);
+        }
+        setLocationDetected(true);
+      } catch (error) {
+        console.error('Location detection failed:', error);
+        // Default to non-EU if detection fails
+        setIsEULocation(false);
+        setLocationDetected(true);
+      }
+    };
+
+    detectLocation();
+  }, []);
+
+  // Get the appropriate email based on location
+  const getContactEmail = () => {
+    return isEULocation ? "contact@fgsc.eu" : "hello@uspdatalabs.com";
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -73,7 +110,8 @@ export default function Contact() {
         },
         body: JSON.stringify({
           ...formData,
-          recaptchaToken
+          recaptchaToken,
+          isEULocation // Send location info to backend
         }),
       });
 
@@ -158,8 +196,14 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-1">Email Us</h3>
-                  <p className="text-gray-600">hello@uspdatalabs.com</p>
-                  <p className="text-gray-600">support@uspdatalabs.com</p>
+                  {locationDetected ? (
+                    <>
+                      <p className="text-gray-600">{getContactEmail()}</p>
+                      {/* <p className="text-gray-600">support@uspdatalabs.com</p> */}
+                    </>
+                  ) : (
+                    <p className="text-gray-400">Loading contact info...</p>
+                  )}
                 </div>
               </div>
 

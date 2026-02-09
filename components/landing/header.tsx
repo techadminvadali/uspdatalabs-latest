@@ -20,7 +20,7 @@ export default function Header() {
     <header className="bg-white w-full max-w-7xl m-auto flex justify-between items-center py-4 md:py-6 border border-gray-200 rounded-xl px-4 md:px-8 mt-5 shadow-sm relative">
       {/* Logo */}
       <h1 className={`${DM_Sans.className} text-xl md:text-2xl font-semibold bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent`}>
-        USP DataLabs
+        <Link href="/">USP DataLabs</Link>
       </h1>
 
       {/* Desktop Navigation */}

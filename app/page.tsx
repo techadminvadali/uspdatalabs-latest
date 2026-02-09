@@ -30,7 +30,7 @@ export default function Page() {
           {/* Hero Section - Full Screen */}
           <div className="relative z-10">
             <Overview />
-            <SectionSpacer size="lg" />
+            {/* <SectionSpacer size="lg" /> */}
           </div>
 
           {/* Platform Highlights Section */}
@@ -44,7 +44,7 @@ export default function Page() {
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <Feature />
               </div>
-              <SectionSpacer size="lg" />
+              {/* <SectionSpacer size="lg" /> */}
             </ParallaxSection>
           </div>
 
@@ -57,7 +57,7 @@ export default function Page() {
               className="py-16 md:py-24"
             >
               <PlatformDemo />
-              <SectionSpacer size="lg" />
+              {/* <SectionSpacer size="lg" /> */}
             </ParallaxSection>
           </div>
 
@@ -72,7 +72,7 @@ export default function Page() {
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <Architecture />
               </div>
-              <SectionSpacer size="lg" />
+              {/* <SectionSpacer size="lg" /> */}
             </ParallaxSection>
           </div>      
 
@@ -85,7 +85,7 @@ export default function Page() {
               scaleEffect={false}
             >
               <UseCaseImpact />
-              <SectionSpacer size="lg" />
+              {/* <SectionSpacer size="lg" /> */}
             </ParallaxSection>
           </div>
 
