@@ -20,9 +20,9 @@ export default function ContactPage() {
       <Contact />
       
       {/* Added container with padding and max-width */}
-      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mb-16">
+      {/* <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mb-16">
         <OfficeLocator />
-      </section>
+      </section> */}
       
       <Footer />
     </div>
