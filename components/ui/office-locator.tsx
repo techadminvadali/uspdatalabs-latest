@@ -68,8 +68,8 @@ const continents = Array.from(new Set(offices.map(office => office.continent)));
 export default function OfficeLocator() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
-  const [expandedContinent, setExpandedContinent] = useState<string | null>("Asia");
-  const [selectedOffice, setSelectedOffice] = useState<typeof offices[0] | null>(offices[0]);
+  const [expandedContinent, setExpandedContinent] = useState<string | null>(null);
+  const [selectedOffice, setSelectedOffice] = useState<typeof offices[0] | null>(null);
 
   // Filter offices based on search and country
   const filteredOffices = useMemo(() => {
@@ -260,7 +260,7 @@ export default function OfficeLocator() {
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
                   <div className="p-1.5 bg-blue-50 rounded flex-shrink-0">
-                    <MapPin className="w-4 h-4" />
+                    <MapPin className="w-4 h-4 text-blue-600" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-neutral-900 text-sm">{selectedOffice.name}</p>
@@ -270,7 +270,7 @@ export default function OfficeLocator() {
 
                 <div className="flex items-center gap-3">
                   <div className="p-1.5 bg-green-50 rounded flex-shrink-0">
-                    <Phone className="w-4 h-4" />
+                    <Phone className="w-4 h-4 text-green-600" />
                   </div>
                   <a href={`tel:${selectedOffice.phone}`} className="text-sm text-neutral-600 hover:text-blue-600 transition-colors break-all">
                     {selectedOffice.phone}
@@ -279,7 +279,7 @@ export default function OfficeLocator() {
 
                 <div className="flex items-center gap-3">
                   <div className="p-1.5 bg-purple-50 rounded flex-shrink-0">
-                    <Mail className="w-4 h-4" />
+                    <Mail className="w-4 h-4 text-purple-600" />
                   </div>
                   <a href={`mailto:${selectedOffice.email}`} className="text-sm text-neutral-600 hover:text-blue-600 transition-colors truncate">
                     {selectedOffice.email}
@@ -305,31 +305,48 @@ export default function OfficeLocator() {
           />
 
           {/* Office markers overlay - shows clickable cards for all filtered offices */}
-          <div className="absolute top-2 lg:top-4 right-2 lg:right-4 space-y-2 max-h-[calc(100%-1rem)] lg:max-h-[calc(100%-2rem)] overflow-y-auto">
-            {filteredOffices.map((office) => (
-              <button
-                key={office.id}
-                onClick={() => handleOfficeSelect(office)}
-                className={`flex items-center gap-2 px-2 lg:px-3 py-1.5 lg:py-2 bg-white rounded-lg shadow-md border transition-all text-left ${
-                  selectedOffice?.id === office.id
-                    ? "border-blue-500 ring-2 ring-blue-100"
-                    : "border-neutral-200 hover:border-neutral-300 hover:shadow-lg"
-                }`}
-              >
-                <MapPin className={`w-3 h-3 lg:w-4 lg:h-4 flex-shrink-0 ${
-                  selectedOffice?.id === office.id ? "text-blue-600" : "text-neutral-400"
-                }`} />
-                <div className="min-w-0">
-                  <p className={`text-xs lg:text-sm font-medium truncate ${
-                    selectedOffice?.id === office.id ? "text-blue-700" : "text-neutral-700"
-                  }`}>
-                    {office.name}
-                  </p>
-                  <p className="text-xs text-neutral-400 truncate">{office.city}</p>
-                </div>
-              </button>
-            ))}
-          </div>
+          {selectedOffice && (
+            <div className="absolute top-2 lg:top-4 right-2 lg:right-4 space-y-2 max-h-[calc(100%-1rem)] lg:max-h-[calc(100%-2rem)] overflow-y-auto">
+              {filteredOffices.map((office) => (
+                <button
+                  key={office.id}
+                  onClick={() => handleOfficeSelect(office)}
+                  className={`flex items-center gap-2 px-2 lg:px-3 py-1.5 lg:py-2 bg-white rounded-lg shadow-md border transition-all text-left ${
+                    selectedOffice?.id === office.id
+                      ? "border-blue-500 ring-2 ring-blue-100"
+                      : "border-neutral-200 hover:border-neutral-300 hover:shadow-lg"
+                  }`}
+                >
+                  <MapPin className={`w-3 h-3 lg:w-4 lg:h-4 flex-shrink-0 ${
+                    selectedOffice?.id === office.id ? "text-blue-600" : "text-neutral-400"
+                  }`} />
+                  <div className="min-w-0">
+                    <p className={`text-xs lg:text-sm font-medium truncate ${
+                      selectedOffice?.id === office.id ? "text-blue-700" : "text-neutral-700"
+                    }`}>
+                      {office.name}
+                    </p>
+                    <p className="text-xs text-neutral-400 truncate">{office.city}</p>
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Placeholder when no office is selected */}
+          {!selectedOffice && (
+            <div className="absolute inset-0 flex items-center justify-center bg-white/80 backdrop-blur-sm">
+              <div className="text-center p-6">
+                <MapPin className="w-16 h-16 text-neutral-300 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-neutral-700 mb-2">
+                  Select a Location
+                </h3>
+                <p className="text-sm text-neutral-500">
+                  Choose a continent and office from the left sidebar to view on the map
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
