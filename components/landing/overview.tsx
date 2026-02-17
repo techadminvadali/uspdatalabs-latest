@@ -151,7 +151,7 @@ export default function Overview() {
       className="bg-white relative flex flex-col w-full overflow-hidden pt-16"
     >
       {/* HERO Content */}
-      <div className="flex-1 flex items-center justify-center px-6 py-8 sm:py-16 md:py-24 lg:py-24">
+      <div className="flex-1 flex items-center justify-center px-6 pt-8 sm:pt-16 md:pt-24 lg:pt-24 pb-6 sm:pb-10 md:pb-12 lg:pb-12">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-6xl mx-auto w-full">
           
           {/* LEFT: TEXT CONTENT */}

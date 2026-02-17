@@ -62,7 +62,8 @@ export function ParallaxSection({
         // Only apply scale if explicitly enabled, and use values that won't cause blur
         const scale = scaleEffect ? (progress < 0.5 ? 1 : 1) : 1; // Effectively disabled
         
-        const opacity = fadeIn ? Math.min(progress * 1.5, 1) : 1;
+        // Reach full opacity quickly so headings/text stay readable (no faded look on mobile)
+        const opacity = fadeIn ? (progress > 0.2 ? 1 : progress / 0.2) : 1;
 
         // Use integer pixel values to prevent sub-pixel blur
         sectionRef.current!.style.transform = `translateY(${translateY}px)`;

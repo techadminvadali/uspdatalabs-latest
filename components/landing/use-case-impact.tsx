@@ -41,7 +41,7 @@ const metrics = [
 
 export default function UseCaseImpact() {
   return (
-    <div className="bg-white py-12 md:py-20 w-full overflow-x-hidden">
+    <div className="bg-white py-4 md:py-8 w-full overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-8 w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -207,12 +207,12 @@ const features = [
 
 export default function Feature() {
   return (
-    <div id="platform" className={`${DM_Sans.className} mt-10`}>
-      <div className="text-center mb-12">
-        <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent">
+    <div id="platform" className={`${DM_Sans.className} mt-0`}>
+      <div className="text-center mb-8 [contain:paint]">
+        <h1 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent">
           Platform Highlights
         </h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto ">
           A next-gen automation-first data platform built to compress engineering cycles, reduce TCO, and fast-track AI & GenAI journeys.
         </p>
       </div>

@@ -150,7 +150,7 @@ const stats = [
 
 export default function AboutVision() {
   return (
-    <div className="bg-white py-20 w-full overflow-x-hidden">
+    <div className="bg-white py-8 md:py-12 w-full overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-8 w-full">
         {/* Vision Statement */}
         <motion.div

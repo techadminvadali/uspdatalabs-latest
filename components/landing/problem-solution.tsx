@@ -262,7 +262,7 @@ const solutions = [
 
 export default function ProblemSolution() {
   return (
-    <div className="bg-white py-20 w-full overflow-x-hidden">
+    <div className="bg-white py-8 md:py-12 w-full overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-8 w-full">
         {/* Section A: Why Enterprises Struggle */}
         <motion.div
@@ -327,7 +327,7 @@ export default function ProblemSolution() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="relative py-16 overflow-hidden"
+          className="relative py-8 md:py-12 overflow-hidden"
         >
           {/* Background Elements */}
           <div className="absolute inset-0 -z-10">
