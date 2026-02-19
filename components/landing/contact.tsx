@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import DM_Sans from "@/lib/fonts/dm-sans";
-import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Globe, ChevronDown, ChevronRight, Building2 } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Globe, Building2 } from "lucide-react";
 import AnimatedGridPattern from "@/components/magicui/animated-grid-pattern";
 import DotPattern from "@/components/magicui/dot-pattern";
 import { cn } from "@/lib/utils";
@@ -19,7 +19,7 @@ const advantageSequence = formatTypingSequence([
   "Transform Your Data Operations Today",
 ]);
 
-// Entity data based on the provided table
+// Entity data based on the provided table (image = public folder path for office locator cards)
 const ENTITIES = [
   {
     id: "1",
@@ -31,7 +31,8 @@ const ENTITIES = [
     continent: "Asia Pacific",
     continentColor: "blue",
     website: "www.uspdatalabs.com",
-    phone: "+65 6123 4567"
+    phone: "+65 6123 4567",
+    image: "/singapore-amazing-view.png",
   },
   {
     id: "2",
@@ -43,7 +44,8 @@ const ENTITIES = [
     continent: "Asia Pacific",
     continentColor: "blue",
     website: "www.smartitc.com.sg",
-    phone: "+65 6123 4568"
+    phone: "+65 6123 4568",
+    image: "/singapore-country-view.png",
   },
   {
     id: "3",
@@ -55,7 +57,8 @@ const ENTITIES = [
     continent: "Europe",
     continentColor: "purple",
     website: "www.fgsc.eu",
-    phone: "+31 70 123 4567"
+    phone: "+31 70 123 4567",
+    image: "/netherlands-country-view.png",
   },
   {
     id: "4",
@@ -67,7 +70,8 @@ const ENTITIES = [
     continent: "South Asia",
     continentColor: "green",
     website: "",
-    phone: "+91 8922 123456"
+    phone: "+91 8922 123456",
+    image: "/india--country-view.png",
   },
   {
     id: "5",
@@ -79,7 +83,8 @@ const ENTITIES = [
     continent: "Middle East",
     continentColor: "amber",
     website: "",
-    phone: "+971 6 123 4567"
+    phone: "+971 6 123 4567",
+    image: "/sharjah-uae-country-view.png",
   },
   {
     id: "6",
@@ -91,24 +96,25 @@ const ENTITIES = [
     continent: "Asia Pacific",
     continentColor: "blue",
     website: "",
-    phone: "+855 23 123 456"
+    phone: "+855 23 123 456",
+    image: "/cambodia-country-view.png",
   }
 ];
 
-// Unique continents and countries from ENTITIES (office-locator style)
-const CONTINENTS = Array.from(new Set(ENTITIES.map((e) => e.continent))).sort();
-function getCountriesByContinent(continent: string) {
-  return Array.from(new Set(ENTITIES.filter((e) => e.continent === continent).map((e) => e.country))).sort();
-}
-function getOfficesByCountry(continent: string, country: string) {
-  return ENTITIES.filter((e) => e.continent === continent && e.country === country);
-}
+// Card gradient backgrounds by region (for office locator grid)
+const CARD_GRADIENTS: Record<string, string> = {
+  blue: "from-blue-600 to-blue-800",
+  purple: "from-purple-600 to-purple-800",
+  green: "from-emerald-600 to-emerald-800",
+  amber: "from-amber-500 to-orange-600",
+};
+
+// Fixed Singapore office for the section below Office Locator (never changes)
+const SINGAPORE_OFFICE = ENTITIES.find((e) => e.country === "Singapore") ?? ENTITIES[0];
 
 export default function Contact() {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [selectedEntity, setSelectedEntity] = useState(ENTITIES[0]);
-  const [expandedContinent, setExpandedContinent] = useState<string | null>(ENTITIES[0].continent);
-  const [selectedCountry, setSelectedCountry] = useState<string | null>(ENTITIES[0].country);
   
   const [formData, setFormData] = useState({
     name: "",
@@ -136,15 +142,6 @@ export default function Contact() {
     setRecaptchaToken(token);
   };
 
-  const handleContinentToggle = (continent: string) => {
-    setExpandedContinent((prev) => (prev === continent ? null : continent));
-    if (selectedCountry) setSelectedCountry(null);
-  };
-  const handleCountrySelect = (country: string) => {
-    setSelectedCountry((prev) => (prev === country ? null : country));
-    const first = ENTITIES.find((e) => e.country === country);
-    if (first) setSelectedEntity(first);
-  };
   const handleOfficeSelect = (entity: (typeof ENTITIES)[0]) => {
     setSelectedEntity(entity);
   };
@@ -244,7 +241,7 @@ export default function Contact() {
           </div>
         </motion.div>
 
-        {/* Office Locator: Continent → Country → Office (no map, show details) */}
+        {/* Office Locator: grid of location cards + detail panel (hover to see details) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -252,169 +249,103 @@ export default function Contact() {
           viewport={{ once: true }}
           className="mb-8"
         >
-          <div className="rounded-2xl border-2 border-orange-200/50 bg-gradient-to-br from-white via-orange-50/30 to-amber-50/30 shadow-lg overflow-hidden">
-            <div className="flex flex-col lg:flex-row min-h-[480px] lg:min-h-[520px]">
-              {/* Left: Continent → Country → Office list (office locator style) */}
-              <div className="w-full lg:w-80 border-b lg:border-b-0 lg:border-r border-orange-200/50 bg-white/60 flex flex-col min-h-[280px] lg:min-h-[420px]">
-                <div className="p-5 border-b border-orange-200/50">
-                  <h2 className={`text-lg font-semibold text-gray-800 flex items-center gap-2 ${DM_Sans.className}`}>
-                    <MapPin className="w-5 h-5 text-orange-600" />
-                    Find your office
-                  </h2>
-                  <p className="text-xs text-gray-500 mt-1">Select continent → country → office</p>
-                </div>
-                <div className="flex-1 overflow-y-auto p-4 min-h-[200px]">
-                  {CONTINENTS.map((continent) => {
-                    const countries = getCountriesByContinent(continent);
-                    const isExpanded = expandedContinent === continent;
-                    return (
-                      <div key={continent} className="mb-1">
-                        <button
-                          type="button"
-                          onClick={() => handleContinentToggle(continent)}
-                          className={cn(
-                            "w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-all",
-                            isExpanded ? "bg-orange-50 text-orange-700" : "text-gray-700 hover:bg-gray-100"
-                          )}
-                        >
-                          <div className="flex items-center gap-2">
-                            {isExpanded ? (
-                              <ChevronDown className="w-4 h-4 flex-shrink-0" />
-                            ) : (
-                              <ChevronRight className="w-4 h-4 flex-shrink-0" />
-                            )}
-                            <span>{continent}</span>
-                          </div>
-                          <span
-                            className={cn(
-                              "text-xs px-2 py-0.5 rounded-full",
-                              isExpanded ? "bg-orange-100 text-orange-600" : "bg-gray-200 text-gray-500"
-                            )}
-                          >
-                            {countries.length}
-                          </span>
-                        </button>
-                        {isExpanded && (
-                          <div className="ml-4 mt-1 space-y-1">
-                            {countries.map((country) => {
-                              const offices = getOfficesByCountry(continent, country);
-                              const isCountrySelected = selectedCountry === country;
-                              return (
-                                <div key={country}>
-                                  <button
-                                    type="button"
-                                    onClick={() => handleCountrySelect(country)}
-                                    className={cn(
-                                      "w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-all",
-                                      isCountrySelected
-                                        ? "bg-orange-50 text-orange-700 font-medium"
-                                        : "text-gray-600 hover:bg-gray-50"
-                                    )}
-                                  >
-                                    <span className="text-left">{country}</span>
-                                    <span className={cn("text-xs", isCountrySelected ? "text-orange-500" : "text-gray-400")}>
-                                      ({offices.length})
-                                    </span>
-                                  </button>
-                                  {isCountrySelected && (
-                                    <div className="ml-3 mt-1 space-y-1">
-                                      {offices.map((entity) => (
-                                        <button
-                                          key={entity.id}
-                                          type="button"
-                                          onClick={() => handleOfficeSelect(entity)}
-                                          className={cn(
-                                            "w-full flex items-center gap-2 px-3 py-2 rounded-md text-xs transition-all text-left",
-                                            selectedEntity.id === entity.id
-                                              ? "bg-orange-100 text-orange-800 font-medium"
-                                              : "text-gray-500 hover:bg-gray-50"
-                                          )}
-                                        >
-                                          <Building2 className="w-3.5 h-3.5 flex-shrink-0 text-orange-500" />
-                                          <span className="truncate">{entity.name}</span>
-                                        </button>
-                                      ))}
-                                    </div>
-                                  )}
-                                </div>
-                              );
-                            })}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Right: Selected office details (no map — address, email, phone, website) */}
-              <div className="flex-1 flex flex-col justify-center p-6 lg:p-10 min-h-[280px] lg:min-h-[420px]">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className={cn("px-3 py-1 rounded-full border text-xs font-semibold", getContinentBadgeClasses(selectedEntity.continentColor))}>
-                    {selectedEntity.continent}
+          <h2 className={`text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2 ${DM_Sans.className}`}>
+            <MapPin className="w-5 h-5 text-orange-600" />
+            Our Branches
+          </h2>
+          <p className="text-sm text-gray-500 mb-6">Hover or tap a location to see contact details</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Detail panel (selected office — like MIAMI panel in reference) */}
+            <div
+              className={cn(
+                "rounded-xl bg-slate-100/80 border border-slate-200/80 p-5 sm:p-6",
+                "sm:row-span-2 flex flex-col justify-center min-h-[220px] sm:min-h-0 order-first sm:order-none"
+              )}
+            >
+              <h3 className={`text-2xl font-bold text-gray-900 uppercase tracking-tight mb-5 ${DM_Sans.className}`}>
+                {selectedEntity.city}
+              </h3>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                    <Building2 className="w-5 h-5 text-blue-600" />
                   </div>
-                  <span className="text-sm text-gray-500">{selectedEntity.city}, {selectedEntity.country}</span>
-                </div>
-                <h3 className={`text-xl font-bold text-gray-900 mb-4 ${DM_Sans.className}`}>
-                  {selectedEntity.name}
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-5 h-5 text-orange-500" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-0.5">Address</p>
-                      <p className="text-gray-700 text-sm leading-snug">{selectedEntity.address}</p>
-                    </div>
+                  <div>
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Main Office</p>
+                    <p className="text-gray-800 text-sm leading-snug">{selectedEntity.address}</p>
+                    <p className="text-gray-600 text-sm mt-0.5">{selectedEntity.city}, {selectedEntity.country}</p>
                   </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <a href={`tel:${selectedEntity.phone.replace(/\s/g, "")}`} className="text-gray-800 text-sm font-medium hover:text-orange-600">
+                    {selectedEntity.phone}
+                  </a>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <a href={`mailto:${selectedEntity.email}`} className="text-gray-800 text-sm font-medium hover:text-orange-600 truncate block">
+                    {selectedEntity.email}
+                  </a>
+                </div>
+                {selectedEntity.website && (
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-5 h-5 text-orange-500" />
+                    <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                      <Globe className="w-5 h-5 text-blue-600" />
                     </div>
-                    <div>
-                      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-0.5">Email</p>
-                      <a href={`mailto:${selectedEntity.email}`} className="text-orange-600 hover:text-orange-700 text-sm font-medium">
-                        {selectedEntity.email}
-                      </a>
-                    </div>
+                    <a
+                      href={`https://${selectedEntity.website}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-orange-600 text-sm font-medium hover:underline truncate block"
+                    >
+                      {selectedEntity.website}
+                    </a>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-5 h-5 text-orange-500" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-0.5">Phone</p>
-                      <p className="text-gray-700 text-sm font-medium">{selectedEntity.phone}</p>
-                      <p className="text-gray-500 text-xs mt-0.5">Mon–Fri 9AM–6PM local time</p>
-                    </div>
-                  </div>
-                  {selectedEntity.website && (
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Globe className="w-5 h-5 text-orange-500" />
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-0.5">Website</p>
-                        <a
-                          href={`https://${selectedEntity.website}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-orange-600 hover:text-orange-700 text-sm font-medium"
-                        >
-                          {selectedEntity.website}
-                        </a>
-                      </div>
-                    </div>
-                  )}
-                </div>
+                )}
               </div>
             </div>
+
+            {/* Location cards: hover to show details in panel above (use public country images) */}
+            {ENTITIES.map((entity) => {
+              const isSelected = selectedEntity.id === entity.id;
+              const gradient = CARD_GRADIENTS[entity.continentColor] || CARD_GRADIENTS.blue;
+              const hasImage = entity.image;
+              return (
+                <button
+                  key={entity.id}
+                  type="button"
+                  onClick={() => handleOfficeSelect(entity)}
+                  onMouseEnter={() => handleOfficeSelect(entity)}
+                  style={hasImage ? { backgroundImage: `url(${entity.image})`, backgroundSize: "cover", backgroundPosition: "center" } : undefined}
+                  className={cn(
+                    "relative rounded-xl overflow-hidden text-left min-h-[160px] sm:min-h-[180px]",
+                    "transition-all duration-200",
+                    !hasImage && "bg-gradient-to-br",
+                    !hasImage && gradient,
+                    "hover:scale-[1.02] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2",
+                    isSelected && "ring-2 ring-orange-400 ring-offset-2 shadow-lg"
+                  )}
+                >
+                  <div className="absolute inset-0 bg-black/30 hover:bg-black/20 transition-colors" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
+                    <p className="text-white font-bold text-lg sm:text-xl uppercase tracking-tight drop-shadow-md">
+                      {entity.city}
+                    </p>
+                    <p className="text-white/90 text-sm font-medium">{entity.country}</p>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-16">
-          {/* Contact Information */}
+          {/* Fixed Singapore office — separate section below Office Locator, never changes */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -424,16 +355,12 @@ export default function Contact() {
           >
             <div>
               <h2 className={`text-3xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent ${DM_Sans.className}`}>
-                {selectedEntity.name}
+                {SINGAPORE_OFFICE.name}
               </h2>
               <p className="text-lg text-gray-600 mb-4">
                 Whether you&apos;re looking to modernize your data infrastructure, implement GenAI solutions, or reduce operational costs, we&apos;re here to help.
               </p>
-              <div className={`inline-block px-4 py-2 rounded-full border ${getContinentBadgeClasses(selectedEntity.continentColor)}`}>
-                <span className="text-sm font-medium">
-                  {selectedEntity.continent}
-                </span>
-              </div>
+             
             </div>
 
             <div className="space-y-6">
@@ -444,10 +371,10 @@ export default function Contact() {
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-1">Email Us</h3>
                   <a 
-                    href={`mailto:${selectedEntity.email}`}
+                    href={`mailto:${SINGAPORE_OFFICE.email}`}
                     className="text-gray-600 hover:text-orange-600 transition-colors"
                   >
-                    {selectedEntity.email}
+                    {SINGAPORE_OFFICE.email}
                   </a>
                 </div>
               </div>
@@ -458,7 +385,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-1">Call Us</h3>
-                  <p className="text-gray-600">{selectedEntity.phone}</p>
+                  <p className="text-gray-600">{SINGAPORE_OFFICE.phone}</p>
                   <p className="text-gray-500 text-sm">Mon-Fri 9AM-6PM Local Time</p>
                 </div>
               </div>
@@ -469,12 +396,12 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-1">Visit Us</h3>
-                  <p className="text-gray-600">{selectedEntity.address}</p>
-                  <p className="text-gray-600 font-medium mt-1">{selectedEntity.city}, {selectedEntity.country}</p>
+                  <p className="text-gray-600">{SINGAPORE_OFFICE.address}</p>
+                  <p className="text-gray-600 font-medium mt-1">{SINGAPORE_OFFICE.city}, {SINGAPORE_OFFICE.country}</p>
                 </div>
               </div>
 
-              {selectedEntity.website && (
+              {SINGAPORE_OFFICE.website && (
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Globe className="w-6 h-6 text-orange-500" />
@@ -482,12 +409,12 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold text-gray-800 mb-1">Website</h3>
                     <a 
-                      href={`https://${selectedEntity.website}`}
+                      href={`https://${SINGAPORE_OFFICE.website}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-orange-600 hover:text-orange-700 transition-colors"
                     >
-                      {selectedEntity.website}
+                      {SINGAPORE_OFFICE.website}
                     </a>
                   </div>
                 </div>

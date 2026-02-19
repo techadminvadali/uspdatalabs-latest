@@ -161,9 +161,9 @@ export default function Overview() {
             variants={headingContainerVariants}
             className="relative z-10 text-center lg:text-left space-y-4 sm:space-y-6 lg:space-y-8"
           >
-            {/* Main Headline with Typing Animation */}
-            <motion.div variants={fadeInUpVariants}>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 bg-clip-text text-transparent tracking-tight leading-tight min-h-[80px] sm:min-h-[100px] md:min-h-[120px]">
+            {/* Main Headline with Typing Animation — fixed height to prevent layout shift on mobile (3-line wrap) */}
+            <motion.div variants={fadeInUpVariants} className="min-h-[150px] sm:min-h-[120px] md:min-h-[130px] lg:min-h-[140px]">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 bg-clip-text text-transparent tracking-tight leading-tight">
                 <TypeAnimation
                   preRenderFirstString={true}
                   speed={50}
