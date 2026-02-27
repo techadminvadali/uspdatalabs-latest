@@ -70,8 +70,8 @@ body {
 }
 
 .orbit-path-1 {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
 }
 
 .orbit-path-2 {
@@ -91,14 +91,14 @@ body {
 
 /* Responsive orbit paths */
 @media (min-width: 640px) {
-  .orbit-path-1 { width: 140px; height: 140px; }
-  .orbit-path-2 { width: 210px; height: 210px; }
-  .orbit-path-3 { width: 290px; height: 290px; }
-  .orbit-path-4 { width: 370px; height: 370px; }
+  .orbit-path-1 { width: 160px; height: 160px; }
+  .orbit-path-2 { width: 230px; height: 230px; }
+  .orbit-path-3 { width: 310px; height: 310px; }
+  .orbit-path-4 { width: 390px; height: 390px; }
 }
 
 @media (min-width: 768px) {
-  .orbit-path-1 { width: 160px; height: 160px; }
+  .orbit-path-1 { width: 180px; height: 180px; }
   .orbit-path-2 { width: 240px; height: 240px; }
   .orbit-path-3 { width: 330px; height: 330px; }
   .orbit-path-4 { width: 420px; height: 420px; }
