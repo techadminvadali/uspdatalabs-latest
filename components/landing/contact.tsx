@@ -39,7 +39,7 @@ const ENTITIES = [
     name: "Smart IT Consulting Pte. Ltd.",
     address: "10 ANSON ROAD, #10 - 11 INTERNATIONAL PLAZA, SINGAPORE (079903)",
     email: "contact@smartitc.com.sg",
-    country: "Singapore",
+    country: "Singapore [Services]",
     city: "Singapore",
     continent: "Asia Pacific",
     continentColor: "blue",
@@ -52,7 +52,7 @@ const ENTITIES = [
     name: "Future Gen Services B.V.",
     address: "Burg Caan Van Necklaan, The Hague",
     email: "contact@fgsc.eu",
-    country: "The Netherlands",
+    country: "Europe",
     city: "The Hague",
     continent: "Europe",
     continentColor: "purple",
@@ -114,7 +114,11 @@ const SINGAPORE_OFFICE = ENTITIES.find((e) => e.country === "Singapore") ?? ENTI
 
 export default function Contact() {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
+  // Office Locator (hover cards)
   const [selectedEntity, setSelectedEntity] = useState(ENTITIES[0]);
+  // Contact form routing (dropdown) — independent from hover cards
+  const [selectedRecipientId, setSelectedRecipientId] = useState<string>(SINGAPORE_OFFICE.id);
+  const selectedRecipient = ENTITIES.find((e) => e.id === selectedRecipientId) ?? SINGAPORE_OFFICE;
   
   const [formData, setFormData] = useState({
     name: "",
@@ -146,6 +150,10 @@ export default function Contact() {
     setSelectedEntity(entity);
   };
 
+  const handleRecipientChange = (id: string) => {
+    setSelectedRecipientId(id);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -170,8 +178,8 @@ export default function Contact() {
         body: JSON.stringify({
           ...formData,
           recaptchaToken,
-          selectedEntity: selectedEntity.name,
-          entityEmail: selectedEntity.email
+          recipientEmail: selectedRecipient.email,
+          recipientLabel: `${selectedRecipient.country} — ${selectedRecipient.name}`,
         }),
       });
 
@@ -251,7 +259,7 @@ export default function Contact() {
         >
           <h2 className={`text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2 ${DM_Sans.className}`}>
             <MapPin className="w-5 h-5 text-orange-600" />
-            Our Branches
+            Our Locations
           </h2>
           <p className="text-sm text-gray-500 mb-6">Hover or tap a location to see contact details</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -263,7 +271,7 @@ export default function Contact() {
               )}
             >
               <h3 className={`text-2xl font-bold text-gray-900 uppercase tracking-tight mb-5 ${DM_Sans.className}`}>
-                {selectedEntity.city}
+                {selectedEntity.country}
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
@@ -334,9 +342,8 @@ export default function Contact() {
                   <div className="absolute inset-0 bg-black/30 hover:bg-black/20 transition-colors" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
                     <p className="text-white font-bold text-lg sm:text-xl uppercase tracking-tight drop-shadow-md">
-                      {entity.city}
+                      {entity.country}
                     </p>
-                    <p className="text-white/90 text-sm font-medium">{entity.country}</p>
                   </div>
                 </button>
               );
@@ -344,116 +351,15 @@ export default function Contact() {
           </div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
-          {/* Fixed Singapore office — separate section below Office Locator, never changes */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <div>
-              <h2 className={`text-3xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent ${DM_Sans.className}`}>
-                {SINGAPORE_OFFICE.name}
-              </h2>
-              <p className="text-lg text-gray-600 mb-4">
-                Whether you&apos;re looking to modernize your data infrastructure, implement GenAI solutions, or reduce operational costs, we&apos;re here to help.
-              </p>
-             
-            </div>
-
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-6 h-6 text-orange-500" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-800 mb-1">Email Us</h3>
-                  <a 
-                    href={`mailto:${SINGAPORE_OFFICE.email}`}
-                    className="text-gray-600 hover:text-orange-600 transition-colors"
-                  >
-                    {SINGAPORE_OFFICE.email}
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-6 h-6 text-orange-500" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-800 mb-1">Call Us</h3>
-                  <p className="text-gray-600">{SINGAPORE_OFFICE.phone}</p>
-                  <p className="text-gray-500 text-sm">Mon-Fri 9AM-6PM Local Time</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-6 h-6 text-orange-500" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-800 mb-1">Visit Us</h3>
-                  <p className="text-gray-600">{SINGAPORE_OFFICE.address}</p>
-                  <p className="text-gray-600 font-medium mt-1">{SINGAPORE_OFFICE.city}, {SINGAPORE_OFFICE.country}</p>
-                </div>
-              </div>
-
-              {SINGAPORE_OFFICE.website && (
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Globe className="w-6 h-6 text-orange-500" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">Website</h3>
-                    <a 
-                      href={`https://${SINGAPORE_OFFICE.website}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-orange-600 hover:text-orange-700 transition-colors"
-                    >
-                      {SINGAPORE_OFFICE.website}
-                    </a>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <div className="bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 rounded-xl p-6 relative overflow-hidden border border-orange-100">
-              <div className="absolute inset-0">
-                <AnimatedGridPattern
-                  numSquares={20}
-                  maxOpacity={0.1}
-                  duration={3}
-                  repeatDelay={1}
-                  className={cn(
-                    "[mask-image:radial-gradient(200px_circle_at_center,white,transparent)]",
-                  )}
-                />
-              </div>
-              <div className="relative z-10">
-                <h3 className="font-bold text-2xl text-center mb-2">
-                  <TypeAnimation
-                    preRenderFirstString={true}
-                    speed={50}
-                    repeat={Infinity}
-                    sequence={advantageSequence}
-                    className="bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent"
-                  />
-                </h3>
-              </div>
-            </div>
-          </motion.div>
-
+        <div className="flex flex-col items-center gap-8 mt-1">
+        
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="bg-white rounded-2xl shadow-xl border border-gray-200 p-8 relative overflow-hidden"
+            className="w-full max-w-3xl bg-white rounded-2xl shadow-xl border border-gray-200 p-10 sm:p-12 relative overflow-hidden"
           >
             <div className="absolute inset-0">
               <DotPattern
@@ -464,11 +370,11 @@ export default function Contact() {
             </div>
             
             <div className="relative z-10">
-              <h2 className={`text-2xl font-bold mb-6 text-gray-800 ${DM_Sans.className}`}>
+              <h2 className={`text-3xl font-bold mb-8 text-gray-800 ${DM_Sans.className}`}>
                 Send us a Message
               </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-7">
                 <input
                   type="text"
                   name="honeypot"
@@ -479,9 +385,39 @@ export default function Contact() {
                   autoComplete="off"
                 />
 
+                {/* Region / office routing */}
+                <div>
+                  <label htmlFor="recipient" className="block text-base font-medium text-gray-700 mb-2">
+                    Your Region *
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="recipient"
+                      value={selectedRecipientId}
+                      onChange={(e) => handleRecipientChange(e.target.value)}
+                      className={cn(
+                        "w-full appearance-none bg-white border border-gray-200 rounded-lg px-4 py-3 pr-10",
+                        "text-base text-gray-800",
+                        "focus:ring-4 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all"
+                      )}
+                      required
+                    >
+                      {ENTITIES.map((e) => (
+                        <option key={e.id} value={e.id}>
+                          {e.country} 
+                        </option>
+                      ))}
+                    </select>
+                    <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+                      ▼
+                    </span>
+                  </div>
+                 
+                </div>
+
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="name" className="block text-base font-medium text-gray-700 mb-2">
                       Full Name *
                     </label>
                     <Input
@@ -491,12 +427,12 @@ export default function Contact() {
                       required
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full focus:ring-orange-500 focus:border-orange-500"
+                      className="w-full text-base focus:ring-orange-500 focus:border-orange-500"
                       placeholder="Your full name"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="email" className="block text-base font-medium text-gray-700 mb-2">
                       Email Address *
                     </label>
                     <Input
@@ -506,7 +442,7 @@ export default function Contact() {
                       required
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full focus:ring-orange-500 focus:border-orange-500"
+                      className="w-full text-base focus:ring-orange-500 focus:border-orange-500"
                       placeholder="your.email@company.com"
                     />
                   </div>
@@ -514,7 +450,7 @@ export default function Contact() {
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="company" className="block text-base font-medium text-gray-700 mb-2">
                       Company
                     </label>
                     <Input
@@ -523,12 +459,12 @@ export default function Contact() {
                       type="text"
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="w-full focus:ring-orange-500 focus:border-orange-500"
+                      className="w-full text-base focus:ring-orange-500 focus:border-orange-500"
                       placeholder="Your company name"
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="phone" className="block text-base font-medium text-gray-700 mb-2">
                       Phone Number
                     </label>
                     <Input
@@ -537,14 +473,14 @@ export default function Contact() {
                       type="tel"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full focus:ring-orange-500 focus:border-orange-500"
+                      className="w-full text-base focus:ring-orange-500 focus:border-orange-500"
                       placeholder="+1 (555) 123-4567"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="subject" className="block text-base font-medium text-gray-700 mb-2">
                     Subject *
                   </label>
                   <Input
@@ -560,7 +496,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="message" className="block text-base font-medium text-gray-700 mb-2">
                     Message *
                   </label>
                   <Textarea
@@ -601,7 +537,7 @@ export default function Contact() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white py-3 text-lg font-semibold rounded-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white py-4 text-lg font-semibold rounded-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <div className="flex items-center space-x-2">
@@ -618,6 +554,30 @@ export default function Contact() {
               </form>
             </div>
           </motion.div>
+
+          {/* Advantage tagline — below contact form, centered */}
+          <div className="w-full max-w-3xl bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 rounded-xl p-6 relative overflow-hidden border border-orange-100">
+            <div className="absolute inset-0">
+              <AnimatedGridPattern
+                numSquares={20}
+                maxOpacity={0.1}
+                duration={3}
+                repeatDelay={1}
+                className={cn("[mask-image:radial-gradient(200px_circle_at_center,white,transparent)]")}
+              />
+            </div>
+            <div className="relative z-10">
+              <h3 className="font-bold text-2xl text-center mb-2">
+                <TypeAnimation
+                  preRenderFirstString={true}
+                  speed={50}
+                  repeat={Infinity}
+                  sequence={advantageSequence}
+                  className="bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent"
+                />
+              </h3>
+            </div>
+          </div>
         </div>
       </div>
     </div>

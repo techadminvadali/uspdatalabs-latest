@@ -359,7 +359,7 @@ export default function ProblemSolution() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="group relative bg-gray-300/20 rounded-2xl p-6 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 overflow-hidden"
+                  className="group relative bg-gray-300/20 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
                 >
                   {/* Glow Effect */}
                   <div className="absolute -inset-1 bg-gradient-to-r from-orange-400 to-amber-500 rounded-2xl opacity-0 group-hover:opacity-20 blur transition duration-300"></div>
@@ -387,21 +387,27 @@ export default function ProblemSolution() {
                       </h3>
                       <p className="text-gray-600 mb-4">{solution.benefit}</p>
                       
-                      {/* Before/After Comparison */}
-                      <div className="mt-6 space-y-3">
-                        <div className="flex items-start">
-                          <div className="flex-shrink-0 w-6 h-6 rounded-full bg-red-100 flex items-center justify-center mr-3 mt-0.5">
-                            <svg className="w-3 h-3 text-red-600" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                            </svg>
-                          </div>
-                          <p className="text-sm text-gray-500">{solution.traditional}</p>
+                      {/* Traditional (shown on hover only) */}
+                      <div
+                        className={cn(
+                          "mt-5 rounded-xl bg-white/60 px-4 py-3",
+                          "opacity-0 max-h-0 overflow-hidden translate-y-1",
+                          "transition-all duration-300 ease-out",
+                          "group-hover:opacity-100 group-hover:max-h-24 group-hover:translate-y-0"
+                        )}
+                      >
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="inline-flex h-2 w-2 rounded-full bg-gray-400" />
+                          <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                            Traditional
+                          </p>
                         </div>
+                        <p className="text-sm text-gray-600">{solution.traditional}</p>
                       </div>
                     </div>
                     
                     {/* Hover Effect */}
-                    <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-orange-200 pointer-events-none transition-all duration-300"></div>
+                    <div className="absolute inset-0 rounded-2xl pointer-events-none transition-all duration-300" />
                   </div>
                 </motion.div>
               ))}

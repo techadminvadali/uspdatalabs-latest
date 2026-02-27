@@ -207,9 +207,9 @@ const features = [
 
 export default function Feature() {
   return (
-    <div id="platform" className={`${DM_Sans.className} mt-0`}>
-      <div className="text-center mb-8 [contain:paint]">
-        <h1 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent">
+    <div id="platform" className={`${DM_Sans.className} mt-0 overflow-visible`}>
+      <div className="text-center mb-8 overflow-visible">
+        <h1 className="text-4xl sm:text-5xl font-bold mb-6 py-1 px-3 sm:px-4 bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent selection:bg-transparent inline-block">
           Platform Highlights
         </h1>
         <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto ">

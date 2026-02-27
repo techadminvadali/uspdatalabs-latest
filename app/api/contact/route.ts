@@ -4,10 +4,32 @@ import { NextRequest, NextResponse } from 'next/server';
 const RECIPIENT_EMAIL = 'hello@uspdatalabs.com'; // 👈 CHANGE THIS TO YOUR EMAIL
 const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY; // 👈 ADD TO .env
 
+function getAllowedRecipients(): Set<string> {
+  const env = process.env.CONTACT_RECIPIENT_EMAILS;
+  const emails = (env ? env.split(',') : [])
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  // Always allow the default fallback recipient.
+  emails.push(RECIPIENT_EMAIL);
+  return new Set(emails);
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, company, phone, subject, message, recaptchaToken, honeypot } = body;
+    const {
+      name,
+      email,
+      company,
+      phone,
+      subject,
+      message,
+      recaptchaToken,
+      honeypot,
+      recipientEmail,
+      recipientLabel,
+    } = body;
 
     // Spam protection - honeypot check
     if (honeypot) {
@@ -36,8 +58,18 @@ export async function POST(request: NextRequest) {
     }
 
     // Email content
+    const allowedRecipients = getAllowedRecipients();
+    const safeRecipientEmail =
+      typeof recipientEmail === 'string' && allowedRecipients.has(recipientEmail)
+        ? recipientEmail
+        : RECIPIENT_EMAIL;
+
     const emailContent = `
 New Contact Form Submission from USP DataLabs Website
+
+Routing:
+Recipient: ${recipientLabel || 'Default'}
+To: ${safeRecipientEmail}
 
 Name: ${name}
 Email: ${email}
@@ -56,7 +88,7 @@ IP: ${request.ip || 'Unknown'}
 
     // TODO: Replace this with actual email service (SendGrid, Nodemailer, etc.)
     console.log('📧 EMAIL TO SEND:');
-    console.log('To:', RECIPIENT_EMAIL);
+    console.log('To:', safeRecipientEmail);
     console.log('Subject: New Contact Form Submission - ' + subject);
     console.log('Content:', emailContent);
 
