@@ -282,6 +282,8 @@ export default function Overview() {
 
               {/* Center Icon */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
+                {/* Glow effect behind center icon */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full bg-orange-400/30 blur-xl animate-pulse-slow"></div>
                 <div className="relative w-28 h-28 rounded-full flex items-center justify-center shadow-2xl shadow-orange-400/30 border-2 border-orange-300/50 bg-white overflow-hidden">
                   <Image
                     src={FinalLogo}

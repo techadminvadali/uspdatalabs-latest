@@ -70,50 +70,49 @@ body {
 }
 
 .orbit-path-1 {
-  width: 140px;
-  height: 140px;
+  width: 200px;
+  height: 200px;
 }
 
 .orbit-path-2 {
-  width: 180px;
-  height: 180px;
+  width: 280px;
+  height: 280px;
 }
 
 .orbit-path-3 {
-  width: 250px;
-  height: 250px;
+  width: 360px;
+  height: 360px;
 }
 
 .orbit-path-4 {
-  width: 320px;
-  height: 320px;
+  width: 440px;
+  height: 440px;
 }
 
 /* Responsive orbit paths */
 @media (min-width: 640px) {
-  .orbit-path-1 { width: 160px; height: 160px; }
-  .orbit-path-2 { width: 230px; height: 230px; }
-  .orbit-path-3 { width: 310px; height: 310px; }
-  .orbit-path-4 { width: 390px; height: 390px; }
+  .orbit-path-1 { width: 230px; height: 230px; }
+  .orbit-path-2 { width: 320px; height: 320px; }
+  .orbit-path-3 { width: 410px; height: 410px; }
+  .orbit-path-4 { width: 510px; height: 510px; }
 }
 
 @media (min-width: 768px) {
-  .orbit-path-1 { width: 180px; height: 180px; }
-  .orbit-path-2 { width: 240px; height: 240px; }
-  .orbit-path-3 { width: 330px; height: 330px; }
-  .orbit-path-4 { width: 420px; height: 420px; }
+  .orbit-path-1 { width: 260px; height: 260px; }
+  .orbit-path-2 { width: 360px; height: 360px; }
+  .orbit-path-3 { width: 470px; height: 470px; }
+  .orbit-path-4 { width: 590px; height: 590px; }
 }
 
 /* Orbit Icons */
 .orbit-icon {
   position: absolute;
   top: 50%;
-  left: 50%;
-  width: 40px;
-  height: 40px;
-  margin-left: -20px;
-  margin-top: -20px;
-  background: #0a192f;
+  left: 48%;
+  width: 48px;
+  height: 48px;
+  margin-left: -24px;
+  margin-top: -24px;
   border: 1px solid rgba(59, 130, 246, 0.3);
   border-radius: 50%;
   display: flex;
@@ -126,19 +125,19 @@ body {
 
 @media (min-width: 640px) {
   .orbit-icon {
-    width: 48px;
-    height: 48px;
-    margin-left: -24px;
-    margin-top: -24px;
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
   }
 }
 
 @media (min-width: 768px) {
   .orbit-icon {
-    width: 56px;
-    height: 56px;
-    margin-left: -28px;
-    margin-top: -28px;
+    width: 72px;
+    height: 72px;
+    margin-left: -36px;
+    margin-top: -36px;
   }
 }
 
@@ -172,15 +171,6 @@ body {
 /* Orbit keyframes - Mobile */
 @keyframes orbit1 {
   from {
-    transform: rotate(0deg) translateX(60px) rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg) translateX(60px) rotate(-360deg);
-  }
-}
-
-@keyframes orbit2 {
-  from {
     transform: rotate(0deg) translateX(90px) rotate(0deg);
   }
   to {
@@ -188,60 +178,69 @@ body {
   }
 }
 
-@keyframes orbit3 {
+@keyframes orbit2 {
   from {
-    transform: rotate(0deg) translateX(125px) rotate(0deg);
+    transform: rotate(0deg) translateX(130px) rotate(0deg);
   }
   to {
-    transform: rotate(360deg) translateX(125px) rotate(-360deg);
+    transform: rotate(360deg) translateX(130px) rotate(-360deg);
+  }
+}
+
+@keyframes orbit3 {
+  from {
+    transform: rotate(0deg) translateX(170px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(170px) rotate(-360deg);
   }
 }
 
 @keyframes orbit4 {
   from {
-    transform: rotate(0deg) translateX(160px) rotate(0deg);
+    transform: rotate(0deg) translateX(210px) rotate(0deg);
   }
   to {
-    transform: rotate(360deg) translateX(160px) rotate(-360deg);
+    transform: rotate(360deg) translateX(210px) rotate(-360deg);
   }
 }
 
 /* Responsive orbit radii */
 @media (min-width: 640px) {
   @keyframes orbit1 {
-    from { transform: rotate(0deg) translateX(70px) rotate(0deg); }
-    to { transform: rotate(360deg) translateX(70px) rotate(-360deg); }
-  }
-  @keyframes orbit2 {
     from { transform: rotate(0deg) translateX(105px) rotate(0deg); }
     to { transform: rotate(360deg) translateX(105px) rotate(-360deg); }
   }
+  @keyframes orbit2 {
+    from { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+  }
   @keyframes orbit3 {
-    from { transform: rotate(0deg) translateX(145px) rotate(0deg); }
-    to { transform: rotate(360deg) translateX(145px) rotate(-360deg); }
+    from { transform: rotate(0deg) translateX(200px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
   }
   @keyframes orbit4 {
-    from { transform: rotate(0deg) translateX(185px) rotate(0deg); }
-    to { transform: rotate(360deg) translateX(185px) rotate(-360deg); }
+    from { transform: rotate(0deg) translateX(250px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(250px) rotate(-360deg); }
   }
 }
 
 @media (min-width: 768px) {
   @keyframes orbit1 {
-    from { transform: rotate(0deg) translateX(80px) rotate(0deg); }
-    to { transform: rotate(360deg) translateX(80px) rotate(-360deg); }
-  }
-  @keyframes orbit2 {
     from { transform: rotate(0deg) translateX(120px) rotate(0deg); }
     to { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
   }
+  @keyframes orbit2 {
+    from { transform: rotate(0deg) translateX(170px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(170px) rotate(-360deg); }
+  }
   @keyframes orbit3 {
-    from { transform: rotate(0deg) translateX(165px) rotate(0deg); }
-    to { transform: rotate(360deg) translateX(165px) rotate(-360deg); }
+    from { transform: rotate(0deg) translateX(230px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(230px) rotate(-360deg); }
   }
   @keyframes orbit4 {
-    from { transform: rotate(0deg) translateX(210px) rotate(0deg); }
-    to { transform: rotate(360deg) translateX(210px) rotate(-360deg); }
+    from { transform: rotate(0deg) translateX(290px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(290px) rotate(-360deg); }
   }
 }
 
