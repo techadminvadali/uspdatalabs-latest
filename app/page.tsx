@@ -7,7 +7,6 @@ import UseCaseImpact from "@/components/landing/use-case-impact";
 import WhyNow from "@/components/landing/why-now";
 import { GlowCapture } from "@codaworks/react-glow";
 import { ParallaxSection } from '@/components/ui/ParallaxSection';
-import { SectionSpacer } from '@/components/ui/SectionSpacer';
 import { useEffect, useState } from 'react';
 import Architecture from "@/components/landing/architecture";
 import PlatformDemo from "@/components/landing/platform-demo";
@@ -39,7 +38,7 @@ export default function Page() {
               speed={0.3} 
               fadeIn={true}
               scaleEffect={false}
-              className="py-16 md:py-24"
+              className="pt-2 pb-4 md:pt-4 md:pb-6"
             >
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <Feature />
@@ -54,7 +53,7 @@ export default function Page() {
               speed={0.3} 
               fadeIn={true}
               scaleEffect={false}
-              className="py-16 md:py-24"
+              className="py-4 md:py-6"
             >
               <PlatformDemo />
               {/* <SectionSpacer size="lg" /> */}
@@ -67,7 +66,7 @@ export default function Page() {
               speed={0.3} 
               fadeIn={true}
               scaleEffect={false}
-              className="py-16 md:py-24"
+              className="py-4 md:py-6"
             >
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <Architecture />
@@ -99,7 +98,6 @@ export default function Page() {
               blurEffect={false}
             >
               <WhyNow />
-              <SectionSpacer size="sm" />
             </ParallaxSection>
           </div>
         </div>

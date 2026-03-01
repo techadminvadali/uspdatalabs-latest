@@ -151,7 +151,7 @@ export default function Overview() {
       className="bg-white relative flex flex-col w-full overflow-hidden pt-16"
     >
       {/* HERO Content */}
-      <div className="flex-1 flex items-center justify-center px-6 py-8 sm:py-16 md:py-24 lg:py-24">
+      <div className="flex-1 flex items-center justify-center px-6 pt-8 sm:pt-16 md:pt-24 lg:pt-24 pb-6 sm:pb-10 md:pb-12 lg:pb-12">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-6xl mx-auto w-full">
           
           {/* LEFT: TEXT CONTENT */}
@@ -161,9 +161,9 @@ export default function Overview() {
             variants={headingContainerVariants}
             className="relative z-10 text-center lg:text-left space-y-4 sm:space-y-6 lg:space-y-8"
           >
-            {/* Main Headline with Typing Animation */}
-            <motion.div variants={fadeInUpVariants}>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 bg-clip-text text-transparent tracking-tight leading-tight min-h-[80px] sm:min-h-[100px] md:min-h-[120px]">
+            {/* Main Headline with Typing Animation — reserve enough height for longest phrases (no clipping, no layout shift) */}
+            <motion.div variants={fadeInUpVariants} className="min-h-[150px] sm:min-h-[140px] md:min-h-[220px] lg:min-h-[280px] xl:min-h-[320px]">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 bg-clip-text text-transparent tracking-tight leading-tight">
                 <TypeAnimation
                   preRenderFirstString={true}
                   speed={50}
@@ -282,6 +282,8 @@ export default function Overview() {
 
               {/* Center Icon */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
+                {/* Glow effect behind center icon */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full bg-orange-400/30 blur-xl animate-pulse-slow"></div>
                 <div className="relative w-28 h-28 rounded-full flex items-center justify-center shadow-2xl shadow-orange-400/30 border-2 border-orange-300/50 bg-white overflow-hidden">
                   <Image
                     src={FinalLogo}

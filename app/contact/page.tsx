@@ -18,11 +18,7 @@ export default function ContactPage() {
     <div className="bg-white min-h-screen overflow-x-hidden w-full">
       <Header />
       <Contact />
-      
      
-      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mb-16">
-        <OfficeLocator />
-      </section>
       
       <Footer />
     </div>
